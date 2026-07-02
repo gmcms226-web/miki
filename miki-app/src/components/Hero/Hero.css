@@ -1,0 +1,20 @@
+.hero {
+  position: relative;
+  width: 100%;
+}
+
+.hero-top img {
+  width: 100%;
+  display: block;
+}
+
+.hero-bottom {
+  margin-top: -60px; /* 위 이미지 발 부분 덮는 높이 - 조정 가능 */
+  position: relative;
+  z-index: 1;
+}
+
+.hero-bottom img {
+  width: 100%;
+  display: block;
+}

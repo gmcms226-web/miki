@@ -1,0 +1,30 @@
+.page-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.sidebar-area {
+  width: 380px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  border-right: 1px solid #f0f0f0;
+}
+
+.main-area {
+  width: 600px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1120px) {
+  .sidebar-area {
+    display: none;
+  }
+  .main-area {
+    width: 100%;
+  }
+}

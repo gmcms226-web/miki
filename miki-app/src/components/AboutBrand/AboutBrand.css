@@ -1,0 +1,111 @@
+.about-section {
+  padding: 48px 24px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.about-circle {
+  width: 316px;
+  height: 316px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-pink {
+  background-image: url('/src/assets/images/circle-pink.png');
+}
+
+.circle-green {
+  background-image: url('/src/assets/images/circle-green.png');
+}
+
+.circle-orange {
+  background-image: url('/src/assets/images/circle-orange.png');
+}
+
+.about-item-title {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #222;
+  margin: 0;
+}
+
+.about-btn {
+  padding: 14px 48px;
+  background: #222;
+  color: #fff;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+}
+
+.about-item-desc {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* 세로형 스프라이트(150x900, 6프레임)를 270px 프레임으로 표시 — top이 270px씩 증가 */
+.about-sprite {
+  width: 270px;
+  height: 270px;
+  background-repeat: no-repeat;
+  background-size: 270px auto;
+  transform: scale(0.7); /* 점선 원 안에 들어가게 축소 — 값만 조절하면 크기 변경 */
+}
+
+.sprite-clothes {
+  background-image: url('/src/assets/images/move-clothes.png');
+  animation: sprite-move 1.2s step-end infinite;
+}
+
+.sprite-shoes {
+  background-image: url('/src/assets/images/move-shoes.png');
+  animation: sprite-move 1.2s step-end infinite;
+}
+
+.sprite-gift {
+  background-image: url('/src/assets/images/move-gift.png');
+  animation: sprite-move 1.2s step-end infinite;
+}
+
+@keyframes sprite-move {
+  0% {
+    background-position: left 0;
+  }
+  16.66% {
+    background-position: left -270px;
+  }
+  33.33% {
+    background-position: left -540px;
+  }
+  50% {
+    background-position: left -810px;
+  }
+  66.66% {
+    background-position: left -1080px;
+  }
+  83.33% {
+    background-position: left -1350px;
+  }
+}

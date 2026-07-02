@@ -1,0 +1,90 @@
+.store-section {
+  padding: 48px 24px;
+  background: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.store-label {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 13px;
+  color: #999;
+  margin: 0;
+}
+
+.store-title {
+  font-family: 'Jua', sans-serif;
+  font-size: 36px;
+  color: #222;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.store-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.store-img-link {
+  display: block;
+  width: 100%;
+}
+
+.store-img {
+  width: 100%;
+  display: block;
+}
+
+.store-desc {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.store-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.store-btn-more,
+.store-btn-online {
+  width: 123px;
+  padding: 12px 0;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+}
+
+.store-btn-more {
+  background: #222;
+}
+
+.store-btn-online {
+  background: #FB8E4E;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.store-btn-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}

@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  background: #fff;
+  font-family: 'Pretendard', sans-serif;
+  color: #222;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
