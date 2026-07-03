@@ -142,7 +142,7 @@
 
 .look-main-img,
 .look-sub-images img {
-  width: 100%;
+  width: min(100%, 420px);
   aspect-ratio: 1 / 1;
   object-fit: cover;
   background: #f7f7f7;
@@ -156,8 +156,9 @@
 
 .look-sub-images {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 14px;
   width: 100%;
   max-width: 420px;
 }
