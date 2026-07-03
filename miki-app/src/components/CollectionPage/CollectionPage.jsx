@@ -1,29 +1,9 @@
 import { useEffect } from 'react'
+import { COLLECTIONS } from '../../data/collections'
 import './CollectionPage.css'
 
-const imgSet = (id) => [1, 2, 3].map((n) => `/images/${id}-${n}.png`)
-
-const COLLECTIONS = {
-  spring: {
-    title: 'SPRING COLLECTION',
-    items: [
-      { id: 'spring-01', name: '남아 봄옷', price: 29000, imgs: imgSet('spring-01'), checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_rLN50yrILOe17lfXixuYAuFPQTw5R1xj9Brdw3t8u5s/redirect' },
-      { id: 'spring-02', name: '여아 봄옷', price: 32000, imgs: imgSet('spring-02'), checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_UGzTbcDDm65mAILlYfBGolS87wuCiymcE82P41xlxzy/redirect' },
-      { id: 'spring-03', name: '신발', price: 39000, imgs: imgSet('spring-03'), checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_VZUKOBk1UskUI4L8QK58tAnZ6VqOP4Ex1bwm11cVtzk/redirect' },
-    ],
-  },
-  summer: {
-    title: 'SUMMER COLLECTION',
-    items: [
-      { id: 'summer-01', name: '남아 여름옷', price: 27000, imgs: imgSet('summer-01'), checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_cwsB6WXndLh8qgI6KGbIKzDrZgsMzvaElb8Zc18fwqN/redirect' },
-      { id: 'summer-02', name: '여아 여름옷', price: 25000, imgs: imgSet('summer-02'), checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_qhk3bMA8XT9mASHPLoTNhlA6OkMwSPW1xAasW2gVY0U/redirect' },
-      { id: 'summer-03', name: '신발', price: 35000, imgs: imgSet('summer-03'), checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_Phtsix5soFYSrPg5VZmskXT4nTyMqiY11xrJp3fI7pt/redirect' },
-    ],
-  },
-}
-
 function CollectionPage({ season, onBack, user }) {
-  const { title, items } = COLLECTIONS[season]
+  const { title, year, heroImage, intro, looks } = COLLECTIONS[season]
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -46,29 +26,55 @@ function CollectionPage({ season, onBack, user }) {
       <button className="collection-page-back" onClick={onBack}>
         ← 돌아가기
       </button>
-      <h2 className="collection-page-title">{title}</h2>
-      <div className="collection-page-grid">
-        {items.map((item) => (
-          <div className="collection-page-card" key={item.id}>
-            <div className="collection-page-thumb">
-              {item.imgs.map((src, i) => (
-                <img
-                  key={src}
-                  src={src}
-                  alt={`${item.name} ${i + 1}`}
-                  className="thumb-slide"
-                  style={{ animationDelay: `${i * 3}s` }}
-                />
+      <section className="collection-hero">
+        <img src={heroImage} alt={title} className="collection-hero-img" />
+        <p className="collection-page-year">{year}</p>
+        <h2 className="collection-page-title">{title}</h2>
+        <p className="collection-page-intro">{intro}</p>
+      </section>
+
+      <nav className="look-index" aria-label={`${title} LOOK INDEX`}>
+        <p className="look-index-label">INDEX</p>
+        <div className="look-index-list">
+          {looks.map((look) => (
+            <a href={`#${look.id}`} className="look-index-item" key={look.id}>
+              {look.menuImage && <img src={look.menuImage} alt="" className="look-index-img" />}
+              <span>LOOK {look.number}</span>
+            </a>
+          ))}
+        </div>
+      </nav>
+
+      {looks.map((look) => (
+        <section className="look-section" id={look.id} key={look.id}>
+          <div className="look-heading">
+            <span className="look-number">LOOK {look.number}</span>
+            <h3 className="look-title">{look.title}</h3>
+          </div>
+          <div className="look-visual">
+            <img src={look.images[0]} alt={`${look.title} 메인 착장`} className="look-main-img" />
+            <div className="look-sub-images">
+              {look.images.slice(1).map((src, index) => (
+                <img src={src} alt={`${look.title} 상세 ${index + 1}`} key={src} />
               ))}
             </div>
-            <h3 className="collection-page-name">{item.name}</h3>
-            <p className="collection-page-price">{item.price.toLocaleString()}원</p>
-            <button className="collection-page-buy" onClick={() => handleBuy(item)}>
-              구매하기
-            </button>
           </div>
-        ))}
-      </div>
+          <p className="look-model">{look.model}</p>
+          {look.products.length > 0 && (
+            <div className="look-products">
+              {look.products.map((item) => (
+                <div className="look-product" key={item.id}>
+                  <span className="look-product-name">{item.name}</span>
+                  <span className="look-product-price">{item.price.toLocaleString()}원</span>
+                  <button className="look-product-buy" onClick={() => handleBuy(item)}>
+                    BUY
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+      ))}
     </div>
   )
 }

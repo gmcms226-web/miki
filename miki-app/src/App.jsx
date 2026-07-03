@@ -46,7 +46,7 @@ function App() {
   return (
     <div className="page-wrapper">
       <aside className="sidebar-area">
-        <Sidebar />
+        <Sidebar onSelectCollection={setPage} />
       </aside>
       <div className="main-area">
         <Header

@@ -45,6 +45,71 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  border: 0;
+  padding: 4px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.search-results {
+  max-height: 178px;
+  margin-top: 10px;
+  overflow-y: auto;
+  border: 1px solid #f4d0bc;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.search-result {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border: 0;
+  border-bottom: 1px solid #f7e4da;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.search-result:last-child {
+  border-bottom: 0;
+}
+
+.search-result:hover {
+  background: #fff6f0;
+}
+
+.search-result-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.search-result-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #333;
+}
+
+.search-result-price {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: #FB8E4E;
+}
+
+.search-result-season,
+.search-empty {
+  font-size: 11px;
+  color: #888;
+}
+
+.search-empty {
+  margin: 0;
+  padding: 12px;
 }
 
 .quick-tags {
