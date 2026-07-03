@@ -2,6 +2,14 @@ const imgSet = (id) => [1, 2, 3].map((n) => `/images/${id}-${n}.png`)
 const springAsset = (name) => `/images/spring-collection-2026/${name}`
 const summerAsset = (name) => `/images/summer-collection-2026/${name}`
 
+const pendingProduct = (id, name, price, keywords) => ({
+  id,
+  name,
+  price,
+  checkoutUrl: '',
+  keywords,
+})
+
 export const COLLECTIONS = {
   spring: {
     title: 'SPRING COLLECTION',
@@ -83,7 +91,9 @@ export const COLLECTIONS = {
           springAsset('imgi_56_look04_img_02.png'),
           springAsset('imgi_57_look04_img_03.png'),
         ],
-        products: [],
+        products: [
+          pendingProduct('spring-04', 'T-SHIRTS', 33000, ['봄', 'spring', 't-shirts', 'tshirt', '티셔츠']),
+        ],
       },
       {
         id: 'spring-look-05',
@@ -96,7 +106,9 @@ export const COLLECTIONS = {
           springAsset('imgi_71_look05_img_02.png'),
           springAsset('imgi_73_look05_img_03.png'),
         ],
-        products: [],
+        products: [
+          pendingProduct('spring-05', 'DRESS', 36000, ['봄', 'spring', 'dress', '원피스']),
+        ],
       },
       {
         id: 'spring-look-06',
@@ -109,7 +121,9 @@ export const COLLECTIONS = {
           springAsset('imgi_78_look06_img_02.png'),
           springAsset('imgi_79_look06_img_03.png'),
         ],
-        products: [],
+        products: [
+          pendingProduct('spring-06', 'SHORTALL', 34000, ['봄', 'spring', 'shortall', '쇼트올']),
+        ],
       },
       {
         id: 'spring-look-07',
@@ -122,7 +136,9 @@ export const COLLECTIONS = {
           springAsset('imgi_88_look07_img_02.png'),
           springAsset('imgi_89_look07_img_03.png'),
         ],
-        products: [],
+        products: [
+          pendingProduct('spring-07', 'SPRING STYLE', 31000, ['봄', 'spring', 'style', '코디']),
+        ],
       },
       {
         id: 'spring-look-08',
@@ -135,7 +151,9 @@ export const COLLECTIONS = {
           springAsset('imgi_96_look08_img_02.png'),
           springAsset('imgi_97_look08_img_03.png'),
         ],
-        products: [],
+        products: [
+          pendingProduct('spring-08', 'SPRING OVERALLS', 37000, ['봄', 'spring', 'overalls', '오버롤']),
+        ],
       },
     ],
   },
@@ -219,7 +237,9 @@ export const COLLECTIONS = {
           summerAsset('imgi_56_look04_img_02.png'),
           summerAsset('imgi_57_look04_img_03.png'),
         ],
-        products: [],
+        products: [
+          pendingProduct('summer-04', 'T-SHIRTS', 33000, ['여름', 'summer', 't-shirts', 'tshirt', '티셔츠']),
+        ],
       },
       {
         id: 'summer-look-05',
@@ -232,7 +252,9 @@ export const COLLECTIONS = {
           summerAsset('imgi_65_look05_img_02.png'),
           summerAsset('imgi_66_look05_img_03.png'),
         ],
-        products: [],
+        products: [
+          pendingProduct('summer-05', 'DRESS', 36000, ['여름', 'summer', 'dress', '원피스']),
+        ],
       },
       {
         id: 'summer-look-06',
@@ -245,7 +267,9 @@ export const COLLECTIONS = {
           summerAsset('imgi_73_look06_img_02.png'),
           summerAsset('imgi_74_look06_img_03.png'),
         ],
-        products: [],
+        products: [
+          pendingProduct('summer-06', 'SHORTALL', 34000, ['여름', 'summer', 'shortall', '쇼트올']),
+        ],
       },
       {
         id: 'summer-look-07',
@@ -258,7 +282,9 @@ export const COLLECTIONS = {
           summerAsset('imgi_84_look07_img_02.png'),
           summerAsset('imgi_86_look07_img_03.png'),
         ],
-        products: [],
+        products: [
+          pendingProduct('summer-07', 'T-SHIRTS', 31000, ['여름', 'summer', 't-shirts', 'tshirt', '티셔츠']),
+        ],
       },
       {
         id: 'summer-look-08',
@@ -271,7 +297,9 @@ export const COLLECTIONS = {
           summerAsset('imgi_90_look08_img_02.png'),
           summerAsset('imgi_91_look08_img_03.png'),
         ],
-        products: [],
+        products: [
+          pendingProduct('summer-08', 'T-SHIRTS', 31000, ['여름', 'summer', 't-shirts', 'tshirt', '티셔츠']),
+        ],
       },
       {
         id: 'summer-look-09',
@@ -284,7 +312,9 @@ export const COLLECTIONS = {
           summerAsset('imgi_102_look09_img_02.png'),
           summerAsset('imgi_104_look09_img_03.png'),
         ],
-        products: [],
+        products: [
+          pendingProduct('summer-09', 'JINBEI', 38000, ['여름', 'summer', 'jinbei', '진베이']),
+        ],
       },
       {
         id: 'summer-look-10',
@@ -297,7 +327,9 @@ export const COLLECTIONS = {
           summerAsset('imgi_110_look10_img_02.png'),
           summerAsset('imgi_111_look10_img_03.png'),
         ],
-        products: [],
+        products: [
+          pendingProduct('summer-10', 'JINBEI', 38000, ['여름', 'summer', 'jinbei', '진베이']),
+        ],
       },
       {
         id: 'summer-look-11',
@@ -310,7 +342,9 @@ export const COLLECTIONS = {
           summerAsset('imgi_120_look11_img_02.png'),
           summerAsset('imgi_121_look11_img_03.png'),
         ],
-        products: [],
+        products: [
+          pendingProduct('summer-11', 'JINBEI OVERALLS', 39000, ['여름', 'summer', 'jinbei', 'overalls', '오버롤']),
+        ],
       },
     ],
   },
