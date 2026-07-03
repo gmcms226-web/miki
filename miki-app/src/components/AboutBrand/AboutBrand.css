@@ -7,6 +7,46 @@
   gap: 40px;
 }
 
+.about-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.about-subtitle {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #555;
+  margin: 0;
+}
+
+.about-title-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.about-title {
+  font-family: 'Jua', sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  color: #222;
+  margin: 0;
+}
+
+.about-title-icon {
+  width: 48px;
+  height: auto;
+}
+
+.about-dots {
+  height: 6px; /* 원본 168x6 — 값 조절로 크기 변경 */
+  width: auto;
+}
+
 .about-item {
   display: flex;
   flex-direction: column;
@@ -27,15 +67,15 @@
 }
 
 .circle-pink {
-  background-image: url('/src/assets/images/circle-pink.png');
+  background-image: url('/images/circle-pink.png');
 }
 
 .circle-green {
-  background-image: url('/src/assets/images/circle-green.png');
+  background-image: url('/images/circle-green.png');
 }
 
 .circle-orange {
-  background-image: url('/src/assets/images/circle-orange.png');
+  background-image: url('/images/circle-orange.png');
 }
 
 .about-item-title {
@@ -75,17 +115,17 @@
 }
 
 .sprite-clothes {
-  background-image: url('/src/assets/images/move-clothes.png');
+  background-image: url('/images/move-clothes.png');
   animation: sprite-move 1.2s step-end infinite;
 }
 
 .sprite-shoes {
-  background-image: url('/src/assets/images/move-shoes.png');
+  background-image: url('/images/move-shoes.png');
   animation: sprite-move 1.2s step-end infinite;
 }
 
 .sprite-gift {
-  background-image: url('/src/assets/images/move-gift.png');
+  background-image: url('/images/move-gift.png');
   animation: sprite-move 1.2s step-end infinite;
 }
 

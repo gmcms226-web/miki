@@ -11,11 +11,11 @@ function HamburgerMenu({ isOpen, onClose }) {
         </div>
 
         <div className="hg-logo-wrap">
-          <img src="/src/assets/images/logo.png" alt="HOT BISCUITS MIKIHOUSE" className="hg-logo" />
+          <img src="/images/logo.png" alt="HOT BISCUITS MIKIHOUSE" className="hg-logo" />
         </div>
 
         <div className="hg-bump-wrap">
-          <img src="/src/assets/images/hg-bump.png" alt="" className="hg-bump" />
+          <img src="/images/hg-bump.png" alt="" className="hg-bump" />
           <div className="hg-bump-content">
             <div className="hg-login-bar">
               <a href="#" onClick={onClose}>로그인</a>

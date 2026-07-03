@@ -1,0 +1,14 @@
+.sale-banner-section {
+  padding: 48px 24px;
+  background: #fff;
+}
+
+.sale-banner-link {
+  display: block;
+}
+
+.sale-banner-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

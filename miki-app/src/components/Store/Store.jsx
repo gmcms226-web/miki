@@ -5,12 +5,12 @@ function Store() {
     <section id="store" className="store-section">
       <p className="store-label">매장</p>
       <h2 className="store-title">
-        <img src="/src/assets/images/icon-donut.png" alt="도넛" className="store-icon" />
+        <img src="/images/icon-donut.png" alt="도넛" className="store-icon" />
         SHOP
-        <img src="/src/assets/images/icon-biscuit.png" alt="비스켓" className="store-icon" />
+        <img src="/images/icon-biscuit.png" alt="비스켓" className="store-icon" />
       </h2>
       <a href="#" className="store-img-link">
-        <img src="/src/assets/images/store-image.jpg" alt="매장" className="store-img" />
+        <img src="/images/store-image.jpg" alt="매장" className="store-img" />
       </a>
       <p className="store-desc">
         장난감 상자를 뒤집은 것 같은 활기찬 가게에서 고객을 기다리고 있습니다.
@@ -18,7 +18,7 @@ function Store() {
       <div className="store-buttons">
         <button className="store-btn-more">추천 더보기</button>
         <button className="store-btn-online">
-          <img src="/src/assets/images/shop.png" alt="" className="store-btn-icon" />
+          <img src="/images/shop.png" alt="" className="store-btn-icon" />
           ONLINE SHOP
         </button>
       </div>

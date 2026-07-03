@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import './Collection.css'
 
-function Collection() {
+function Collection({ onSelect }) {
   const ref = useRef(null)
   const [animate, setAnimate] = useState(false)
 
@@ -19,10 +19,20 @@ function Collection() {
   return (
     <section id="collection" className={`collection-section${animate ? ' animate' : ''}`} ref={ref}>
       <div className="collection-spring">
-        <img src="/src/assets/images/spring-collection.png" alt="Spring Collection" />
+        <img
+          src="/images/spring-collection.png"
+          alt="Spring Collection"
+          className="collection-clickable"
+          onClick={() => onSelect('spring')}
+        />
       </div>
       <div className="collection-summer">
-        <img src="/src/assets/images/summer-collection.png" alt="Summer Collection" />
+        <img
+          src="/images/summer-collection.png"
+          alt="Summer Collection"
+          className="collection-clickable"
+          onClick={() => onSelect('summer')}
+        />
       </div>
     </section>
   )

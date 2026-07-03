@@ -1,0 +1,177 @@
+.character-section {
+  position: relative;
+  overflow: hidden; /* 가장자리에 걸친 구름 잘라내기 */
+  padding: 48px 24px;
+  background-color: #cce9f5;
+  background-image: url('/images/character-bg.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+/* 떠다니는 구름 — 참고 캡처 기준 배치, duration을 다르게 줘서 엇박자 */
+.character-cloud {
+  position: absolute;
+  animation: cloud-float 3s ease-in-out infinite;
+}
+
+.cloud-1 {
+  left: -20px;
+  bottom: 60px;
+  width: 162px;
+  animation-duration: 3.6s;
+}
+
+.cloud-2 {
+  right: -16px;
+  top: 120px;
+  width: 104px;
+  animation-duration: 2.8s;
+}
+
+.cloud-3 {
+  left: -30px;
+  top: 240px;
+  width: 144px;
+  animation-duration: 3.2s;
+}
+
+.cloud-4 {
+  right: -12px;
+  bottom: 150px;
+  width: 104px;
+  animation-duration: 2.5s;
+}
+
+@keyframes cloud-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.character-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.character-subtitle {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #555;
+  margin: 0;
+}
+
+.character-title-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.character-title {
+  font-family: 'Jua', sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  color: #222;
+  margin: 0;
+}
+
+.character-title-icon {
+  width: 40px;
+  height: auto;
+}
+
+.character-dots {
+  height: 6px; /* about-dots와 동일 크기 */
+  width: auto;
+}
+
+/* CHARACTER 타이틀 왼쪽 아래 비행기 */
+.character-airplane {
+  position: absolute;
+  left: -60px;
+  bottom: -70px;
+  width: 90px;
+  height: auto;
+}
+
+.character-list {
+  position: relative; /* 구름보다 위에 그려지도록 */
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.character-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.character-name {
+  font-family: 'Jua', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #FB8E4E;
+  margin: 0;
+}
+
+.character-desc {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* 세로형 스프라이트 시트를 steps()로 재생 — 이동량 = 프레임 높이 */
+.character-sprite {
+  width: 280px;
+  background-repeat: no-repeat;
+  background-size: 280px auto;
+  transform: scale(0.75); /* 값만 조절하면 크기 변경 */
+}
+
+/* 콩: 280x3000, 250px x 12프레임 */
+.sprite-beans {
+  height: 250px;
+  background-image: url('/images/imgi_37_bg-beans.png');
+  animation: beans-move 1.2s steps(12) infinite;
+}
+
+@keyframes beans-move {
+  to {
+    background-position: 0 -3000px;
+  }
+}
+
+/* 캐빗: 280x3120, 260px x 12프레임 */
+.sprite-cabbit {
+  height: 260px;
+  background-image: url('/images/imgi_38_bg-cabbit.png');
+  animation: cabbit-move 1.2s steps(12) infinite;
+}
+
+@keyframes cabbit-move {
+  to {
+    background-position: 0 -3120px;
+  }
+}

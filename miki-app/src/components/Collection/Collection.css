@@ -4,6 +4,10 @@
   padding: 40px 0 20px;
 }
 
+.collection-clickable {
+  cursor: pointer;
+}
+
 /* Spring: 왼쪽에서 날아옴 */
 .collection-spring {
   width: 78%;

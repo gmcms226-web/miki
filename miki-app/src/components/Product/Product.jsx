@@ -5,7 +5,7 @@ function Product() {
     <section id="product" className="product-section">
       <div className="product-item">
         <div className="product-img-wrap">
-          <img src="/src/assets/images/product-image.jpg" alt="아기 속옷" />
+          <img src="/images/product-image.jpg" alt="아기 속옷" />
         </div>
         <p className="product-label">추천</p>
         <h3 className="product-title">아기 속옷</h3>

@@ -9,14 +9,26 @@ const navItems = [
   { label: '문의', href: '#contact' },
 ]
 
-function Header({ onMenuOpen }) {
+function Header({ onMenuOpen, user, onLoginOpen, onLogout }) {
   return (
     <header className="main-header">
       <div className="header-top">
         <a href="#" className="header-logo">
-          <img src="/src/assets/images/logo.png" alt="HOT BISCUITS MIKIHOUSE" />
+          <img src="/images/logo.png" alt="HOT BISCUITS MIKIHOUSE" />
         </a>
         <div className="header-actions">
+          {user ? (
+            <div className="auth-status">
+              <span className="auth-email">{user.email}</span>
+              <button className="auth-action-btn" onClick={onLogout}>
+                로그아웃
+              </button>
+            </div>
+          ) : (
+            <button className="auth-action-btn" onClick={onLoginOpen}>
+              로그인
+            </button>
+          )}
           <a href="#cart" className="cart-btn" aria-label="장바구니">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
@@ -25,7 +37,7 @@ function Header({ onMenuOpen }) {
             </svg>
           </a>
           <button className="hamburger-flower" onClick={onMenuOpen} aria-label="메뉴 열기">
-            <img src="/src/assets/images/hg-bt.png" alt="메뉴" />
+            <img src="/images/hg-bt.png" alt="메뉴" />
           </button>
         </div>
       </div>

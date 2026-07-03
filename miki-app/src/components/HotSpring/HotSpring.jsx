@@ -10,7 +10,7 @@ function HotSpring() {
         <div className="hotspring-track">
           {[...looks, ...looks].map((num, i) => (
             <div className="hotspring-item" key={`${num}-${i}`}>
-              <img src={`/src/assets/images/menu_${num}.png`} alt={`LOOK ${num}`} />
+              <img src={`/images/menu_${num}.png`} alt={`LOOK ${num}`} />
             </div>
           ))}
         </div>

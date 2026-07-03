@@ -3,6 +3,15 @@ import './AboutBrand.css'
 function AboutBrand() {
   return (
     <section id="about" className="about-section">
+      <div className="about-header">
+        <p className="about-subtitle">브랜드 정보</p>
+        <div className="about-title-row">
+          <img src="/images/icon-car.png" alt="" className="about-title-icon" />
+          <h2 className="about-title">ABOUT BRAND</h2>
+          <img src="/images/icon-helicopter.png" alt="" className="about-title-icon" />
+        </div>
+        <img src="/images/about-dots.png" alt="" className="about-dots" />
+      </div>
       <div className="about-item">
         <div className="about-circle circle-pink">
           <div className="about-sprite sprite-clothes" role="img" aria-label="의류" />

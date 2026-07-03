@@ -21,7 +21,7 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar-logo">
-        <img src="/src/assets/images/logo.png" alt="HOT BISCUITS MIKIHOUSE" />
+        <img src="/images/logo.png" alt="HOT BISCUITS MIKIHOUSE" />
       </div>
 
       <div className="sidebar-search">
@@ -56,12 +56,12 @@ function Sidebar() {
       <div className="collection-slider">
         <div className={`collection-item spring ${activeIdx === 0 ? 'visible' : 'slide-left'}`}>
           <div className="collection-img-wrap">
-            <img src="/src/assets/images/spring-collection.png" alt="Spring Collection" />
+            <img src="/images/spring-collection.png" alt="Spring Collection" />
           </div>
         </div>
         <div className={`collection-item summer ${activeIdx === 1 ? 'visible' : 'slide-right'}`}>
           <div className="collection-img-wrap">
-            <img src="/src/assets/images/summer-collection.png" alt="Summer Collection" />
+            <img src="/images/summer-collection.png" alt="Summer Collection" />
           </div>
         </div>
       </div>
