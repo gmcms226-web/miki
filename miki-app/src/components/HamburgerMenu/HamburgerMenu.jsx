@@ -1,6 +1,39 @@
 import './HamburgerMenu.css'
 
-function HamburgerMenu({ isOpen, onClose }) {
+function HamburgerMenu({
+  isOpen,
+  onClose,
+  onSelectCollection,
+  onLoginOpen,
+  onSignupOpen,
+  onCartOpen,
+  onMemberOpen,
+}) {
+  const openCollection = (season) => {
+    onSelectCollection(season)
+    onClose()
+  }
+
+  const openLogin = () => {
+    onClose()
+    onLoginOpen()
+  }
+
+  const openSignup = () => {
+    onClose()
+    onSignupOpen()
+  }
+
+  const openCart = () => {
+    onClose()
+    onCartOpen()
+  }
+
+  const openMemberPanel = (panel) => {
+    onClose()
+    onMemberOpen(panel)
+  }
+
   return (
     <>
       <div className={`menu-overlay${isOpen ? ' open' : ''}`} onClick={onClose} />
@@ -15,27 +48,35 @@ function HamburgerMenu({ isOpen, onClose }) {
         </div>
 
         <div className="hg-bump-wrap">
-          <img src="/images/hg-bump.png" alt="" className="hg-bump" />
+          <img src="/images/hg-bump.PNG" alt="" className="hg-bump" />
           <div className="hg-bump-content">
             <div className="hg-login-bar">
-              <a href="#" onClick={onClose}>로그인</a>
+              <button type="button" onClick={openLogin}>로그인</button>
               <span className="hg-divider">|</span>
-              <a href="#" onClick={onClose}>회원가입</a>
+              <button type="button" onClick={openSignup}>회원가입</button>
             </div>
             <div className="hg-my-bar">
-              <a href="#" onClick={onClose}>마이페이지</a>
-              <a href="#" onClick={onClose}>장바구니</a>
-              <a href="#" onClick={onClose}>관심상품(0)</a>
-              <a href="#" onClick={onClose}>최근본상품(0)</a>
+              <button type="button" onClick={() => openMemberPanel('mypage')}>마이페이지</button>
+              <button type="button" onClick={openCart}>장바구니</button>
+              <button type="button" onClick={() => openMemberPanel('favorites')}>관심상품</button>
+              <button type="button" onClick={() => openMemberPanel('recent')}>최근본상품</button>
             </div>
           </div>
         </div>
 
         <ul className="hg-nav-main">
-          <li><a href="#collection" onClick={onClose}>Summer Collection</a></li>
-          <li><a href="#collection" onClick={onClose}>Spring Collection</a></li>
-          <li><a href="#about-brand" onClick={onClose}>브랜드 정보</a></li>
-          <li><a href="#pickup" onClick={onClose}>픽업</a></li>
+          <li>
+            <button type="button" onClick={() => openCollection('summer')}>
+              Summer Collection
+            </button>
+          </li>
+          <li>
+            <button type="button" onClick={() => openCollection('spring')}>
+              Spring Collection
+            </button>
+          </li>
+          <li><a href="#about" onClick={onClose}>브랜드 정보</a></li>
+          <li><a href="#product" onClick={onClose}>픽업</a></li>
           <li><a href="#product" onClick={onClose}>아기 속옷</a></li>
           <li><a href="#shop" onClick={onClose}>에브리데이 시리즈</a></li>
         </ul>

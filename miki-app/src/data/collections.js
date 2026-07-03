@@ -119,7 +119,7 @@ export const COLLECTIONS = {
         images: [
           springAsset('imgi_77_look06_img_01.png'),
           springAsset('imgi_78_look06_img_02.png'),
-          springAsset('imgi_79_look06_img_03.png'),
+          springAsset('imgi_77_look06_img_01.png'),
         ],
         products: [
           pendingProduct('spring-06', 'SHORTALL', 34000, ['봄', 'spring', 'shortall', '쇼트올']),

@@ -97,12 +97,16 @@
   flex-shrink: 0;
 }
 
-.hg-login-bar a {
+.hg-login-bar button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
   color: #fff;
   font-family: 'Pretendard', sans-serif;
   font-size: 13px;
   font-weight: 500;
   text-decoration: none;
+  padding: 0;
 }
 
 .hg-my-bar {
@@ -114,12 +118,16 @@
   flex-shrink: 0;
 }
 
-.hg-my-bar a {
+.hg-my-bar button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
   color: #fff;
   font-family: 'Pretendard', sans-serif;
   font-size: 12px;
   font-weight: 500;
   text-decoration: none;
+  padding: 0;
 }
 
 .hg-divider {
@@ -137,14 +145,20 @@
   flex: 1;
 }
 
-.hg-nav-main li a {
+.hg-nav-main li a,
+.hg-nav-main li button {
   display: block;
+  width: 100%;
   padding: 12px 0;
+  border: 0;
+  background: transparent;
   font-family: 'Pretendard', sans-serif;
   font-size: 15px;
   font-weight: 700;
   color: #222;
   text-decoration: none;
+  text-align: left;
+  cursor: pointer;
 }
 
 /* 하단 네비 */

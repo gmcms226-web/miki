@@ -4,6 +4,11 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  scroll-margin-top: 96px;
+}
+
+.footer-anchor {
+  scroll-margin-top: 96px;
 }
 
 .footer-links {

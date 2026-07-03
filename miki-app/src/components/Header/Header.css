@@ -55,14 +55,35 @@
 }
 
 .cart-btn {
+  position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
   color: #333;
+  cursor: pointer;
   transition: color 0.2s;
 }
 
 .cart-btn:hover {
   color: #FB8E4E;
+}
+
+.cart-count {
+  position: absolute;
+  top: -7px;
+  right: -8px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: #FB8E4E;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 16px;
+  text-align: center;
 }
 
 .hamburger-flower {

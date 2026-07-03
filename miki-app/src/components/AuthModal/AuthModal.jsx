@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -17,13 +17,20 @@ const ERROR_MESSAGES = {
   'auth/weak-password': '비밀번호는 6자 이상이어야 합니다.',
 }
 
-function AuthModal({ isOpen, onClose }) {
-  const [mode, setMode] = useState('login') // 'login' | 'signup'
+function AuthModal({ isOpen, initialMode = 'login', onClose }) {
+  const [mode, setMode] = useState(initialMode) // 'login' | 'signup'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirm, setPasswordConfirm] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    if (isOpen) {
+      setMode(initialMode)
+      setError('')
+    }
+  }, [initialMode, isOpen])
 
   if (!isOpen) return null
 

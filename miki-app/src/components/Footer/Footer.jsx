@@ -2,7 +2,8 @@ import './Footer.css'
 
 function Footer() {
   return (
-    <footer className="footer">
+    <footer id="contact" className="footer">
+      <span id="faq" className="footer-anchor" aria-hidden="true" />
       <div className="footer-links">
         <a href="#">회사개요</a>
         <span className="footer-divider">|</span>
