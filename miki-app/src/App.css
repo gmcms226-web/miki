@@ -20,6 +20,12 @@
   flex-shrink: 0;
 }
 
+/* 서브페이지(픽업 등)에서 헤더+본문을 메인 영역과 같은 폭으로 유지 */
+.subpage-shell {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 @media (max-width: 1120px) {
   .sidebar-area {
     display: none;

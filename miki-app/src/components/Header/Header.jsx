@@ -9,7 +9,7 @@ const navItems = [
   { label: '문의', action: 'contact' },
 ]
 
-function Header({ onMenuOpen, user, onLoginOpen, onLogout, cartCount, onCartOpen, onBrandOpen, onPickupOpen }) {
+function Header({ onMenuOpen, user, onLoginOpen, onLogout, cartCount, onCartOpen, onBrandOpen, onPickupOpen, onAnchor, onHome }) {
   const navActions = {
     brand: onBrandOpen,
     pickup: onPickupOpen,
@@ -17,10 +17,25 @@ function Header({ onMenuOpen, user, onLoginOpen, onLogout, cartCount, onCartOpen
     contact: () => alert('점검중입니다.'),
   }
 
+  // 서브페이지에서는 앵커 대신 홈으로 이동 후 해당 섹션으로 스크롤
+  const handleAnchorClick = (event, href) => {
+    if (onAnchor) {
+      event.preventDefault()
+      onAnchor(href)
+    }
+  }
+
+  const handleLogoClick = (event) => {
+    if (onHome) {
+      event.preventDefault()
+      onHome()
+    }
+  }
+
   return (
     <header className="main-header">
       <div className="header-top">
-        <a href="#" className="header-logo">
+        <a href="#" className="header-logo" onClick={handleLogoClick}>
           <img src="/images/logo.png" alt="HOT BISCUITS MIKIHOUSE" />
         </a>
         <div className="header-actions">
@@ -57,7 +72,12 @@ function Header({ onMenuOpen, user, onLoginOpen, onLogout, cartCount, onCartOpen
               {item.label}
             </button>
           ) : (
-            <a key={item.label} href={item.href} className="nav-item">
+            <a
+              key={item.label}
+              href={item.href}
+              className="nav-item"
+              onClick={(event) => handleAnchorClick(event, item.href)}
+            >
               {item.label}
             </a>
           )

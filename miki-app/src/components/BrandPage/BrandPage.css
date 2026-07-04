@@ -232,6 +232,15 @@
   margin-top: 12px;
 }
 
+/* 모바일: 스프라이트(고정 280px×2)가 화면 폭을 넘어 잘리므로 세로로 쌓기 */
+@media (max-width: 600px) {
+  .brand-character-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+}
+
 .brand-character-item {
   display: flex;
   flex-direction: column;

@@ -32,6 +32,7 @@ function App() {
   const [authMode, setAuthMode] = useState('login')
   const [cartOpen, setCartOpen] = useState(false)
   const [shopSelectOpen, setShopSelectOpen] = useState(false)
+  const [pendingHash, setPendingHash] = useState(null)
   const [memberPanel, setMemberPanel] = useState(null)
   const [cartItems, setCartItems] = useState([])
   const [favoriteItems, setFavoriteItems] = useState([])
@@ -51,6 +52,19 @@ function App() {
       alert('결제가 완료되었습니다! 🎉')
     }
   }, [])
+
+  // 서브페이지에서 앵커 클릭 → 홈 렌더 후 해당 섹션으로 스크롤
+  useEffect(() => {
+    if (page === 'home' && pendingHash) {
+      document.querySelector(pendingHash)?.scrollIntoView()
+      setPendingHash(null)
+    }
+  }, [page, pendingHash])
+
+  const goHomeWithAnchor = (hash) => {
+    setPage('home')
+    setPendingHash(hash)
+  }
 
   const addToCart = (item, context) => {
     const cartItem = {
@@ -167,7 +181,57 @@ function App() {
   if (page === 'pickup') {
     return (
       <>
-        <PickupPage onBack={() => setPage('home')} />
+        <div className="subpage-shell">
+          <Header
+            onMenuOpen={() => setMenuOpen(true)}
+            user={user}
+            onLoginOpen={() => openAuth('login')}
+            onLogout={() => signOut(auth)}
+            cartCount={cartCount}
+            onCartOpen={openCart}
+            onBrandOpen={() => setPage('brand')}
+            onPickupOpen={() => setPage('pickup')}
+            onAnchor={goHomeWithAnchor}
+            onHome={() => setPage('home')}
+          />
+          <PickupPage onBack={() => setPage('home')} />
+        </div>
+        <HamburgerMenu
+          isOpen={menuOpen}
+          onClose={() => setMenuOpen(false)}
+          onSelectCollection={setPage}
+          onLoginOpen={() => openAuth('login')}
+          onSignupOpen={() => openAuth('signup')}
+          onCartOpen={openCart}
+          onMemberOpen={openMemberPanel}
+          onBrandOpen={() => setPage('brand')}
+          onPickupOpen={() => setPage('pickup')}
+          onAnchor={goHomeWithAnchor}
+        />
+        <AuthModal isOpen={authOpen} initialMode={authMode} onClose={() => setAuthOpen(false)} />
+        <MemberDrawer
+          panel={memberPanel}
+          user={user}
+          cartCount={cartCount}
+          favoriteItems={favoriteItems}
+          recentItems={recentItems}
+          onClose={() => setMemberPanel(null)}
+          onLoginOpen={() => openAuth('login')}
+          onCartOpen={() => setCartOpen(true)}
+          onAddToCart={addToCart}
+          onRemoveFavorite={removeFavorite}
+          onClearRecent={clearRecentItems}
+          onBuy={handleBuy}
+        />
+        <CartDrawer
+          isOpen={cartOpen}
+          items={cartItems}
+          onClose={() => setCartOpen(false)}
+          onIncrease={increaseCartItem}
+          onDecrease={decreaseCartItem}
+          onRemove={removeCartItem}
+          onBuy={handleBuy}
+        />
         <TopButton />
       </>
     )

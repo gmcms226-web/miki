@@ -10,7 +10,17 @@ function HamburgerMenu({
   onMemberOpen,
   onBrandOpen,
   onPickupOpen,
+  onAnchor,
 }) {
+  // 서브페이지에서는 앵커 대신 홈으로 이동 후 해당 섹션으로 스크롤
+  const handleAnchor = (event, hash) => {
+    onClose()
+    if (onAnchor) {
+      event.preventDefault()
+      onAnchor(hash)
+    }
+  }
+
   const openBrand = () => {
     onClose()
     onBrandOpen()
@@ -93,13 +103,13 @@ function HamburgerMenu({
           <li>
             <button type="button" onClick={openPickup}>아기 속옷</button>
           </li>
-          <li><a href="#shop" onClick={onClose}>에브리데이 시리즈</a></li>
+          <li><a href="#shop" onClick={(event) => handleAnchor(event, '#shop')}>에브리데이 시리즈</a></li>
         </ul>
 
         <ul className="hg-nav-bottom">
-          <li><a href="#store" onClick={onClose}>매장</a></li>
-          <li><a href="#faq" onClick={onClose}>자주묻는 질문</a></li>
-          <li><a href="#contact" onClick={onClose}>문의</a></li>
+          <li><a href="#store" onClick={(event) => handleAnchor(event, '#store')}>매장</a></li>
+          <li><a href="#faq" onClick={(event) => handleAnchor(event, '#faq')}>자주묻는 질문</a></li>
+          <li><a href="#contact" onClick={(event) => handleAnchor(event, '#contact')}>문의</a></li>
         </ul>
 
         <div className="hg-bottom-strip">
