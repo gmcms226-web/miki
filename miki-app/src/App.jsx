@@ -104,6 +104,15 @@ function App() {
     setAuthOpen(true)
   }
 
+  // 비로그인 상태에서 회원 기능 접근 시 로그인 모달로 유도
+  const requireLogin = (action) => (...args) => {
+    if (!user) {
+      openAuth('login')
+      return
+    }
+    action(...args)
+  }
+
   const addRecentItem = (item) => {
     setRecentItems((prev) => [
       { ...item, viewedAt: Date.now() },
@@ -135,6 +144,11 @@ function App() {
     setRecentItems([])
   }
 
+  const guardedAddToCart = requireLogin(addToCart)
+  const guardedToggleFavorite = requireLogin(toggleFavorite)
+  const openCart = requireLogin(() => setCartOpen(true))
+  const openMemberPanel = requireLogin((panel) => setMemberPanel(panel))
+
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
   if (page === 'brand') {
@@ -148,13 +162,14 @@ function App() {
           season={page}
           onBack={() => setPage('home')}
           user={user}
-          onAddToCart={addToCart}
+          onAddToCart={guardedAddToCart}
           favoriteItems={favoriteItems}
-          onToggleFavorite={toggleFavorite}
+          onToggleFavorite={guardedToggleFavorite}
           onTrackRecent={addRecentItem}
           cartCount={cartCount}
-          onCartOpen={() => setCartOpen(true)}
+          onCartOpen={openCart}
         />
+        <AuthModal isOpen={authOpen} initialMode={authMode} onClose={() => setAuthOpen(false)} />
         <CartDrawer
           isOpen={cartOpen}
           items={cartItems}
@@ -180,7 +195,7 @@ function App() {
           onLoginOpen={() => openAuth('login')}
           onLogout={() => signOut(auth)}
           cartCount={cartCount}
-          onCartOpen={() => setCartOpen(true)}
+          onCartOpen={openCart}
           onBrandOpen={() => setPage('brand')}
         />
         <Hero />
@@ -201,8 +216,8 @@ function App() {
         onSelectCollection={setPage}
         onLoginOpen={() => openAuth('login')}
         onSignupOpen={() => openAuth('signup')}
-        onCartOpen={() => setCartOpen(true)}
-        onMemberOpen={setMemberPanel}
+        onCartOpen={openCart}
+        onMemberOpen={openMemberPanel}
         onBrandOpen={() => setPage('brand')}
       />
       <AuthModal isOpen={authOpen} initialMode={authMode} onClose={() => setAuthOpen(false)} />
