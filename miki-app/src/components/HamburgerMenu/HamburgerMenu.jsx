@@ -8,7 +8,13 @@ function HamburgerMenu({
   onSignupOpen,
   onCartOpen,
   onMemberOpen,
+  onBrandOpen,
 }) {
+  const openBrand = () => {
+    onClose()
+    onBrandOpen()
+  }
+
   const openCollection = (season) => {
     onSelectCollection(season)
     onClose()
@@ -75,7 +81,9 @@ function HamburgerMenu({
               Spring Collection
             </button>
           </li>
-          <li><a href="#about" onClick={onClose}>브랜드 정보</a></li>
+          <li>
+            <button type="button" onClick={openBrand}>브랜드 정보</button>
+          </li>
           <li><a href="#product" onClick={onClose}>픽업</a></li>
           <li><a href="#product" onClick={onClose}>아기 속옷</a></li>
           <li><a href="#shop" onClick={onClose}>에브리데이 시리즈</a></li>

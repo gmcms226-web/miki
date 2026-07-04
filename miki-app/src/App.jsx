@@ -19,11 +19,12 @@ import AuthModal from './components/AuthModal/AuthModal'
 import HamburgerMenu from './components/HamburgerMenu/HamburgerMenu'
 import CartDrawer from './components/CartDrawer/CartDrawer'
 import MemberDrawer from './components/MemberDrawer/MemberDrawer'
+import BrandPage from './components/BrandPage/BrandPage'
 import './App.css'
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [page, setPage] = useState('home') // 'home' | 'spring' | 'summer'
+  const [page, setPage] = useState('home') // 'home' | 'spring' | 'summer' | 'brand'
   const [authOpen, setAuthOpen] = useState(false)
   const [authMode, setAuthMode] = useState('login')
   const [cartOpen, setCartOpen] = useState(false)
@@ -136,6 +137,10 @@ function App() {
 
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
+  if (page === 'brand') {
+    return <BrandPage onBack={() => setPage('home')} onSelectCollection={setPage} />
+  }
+
   if (page !== 'home') {
     return (
       <>
@@ -176,6 +181,7 @@ function App() {
           onLogout={() => signOut(auth)}
           cartCount={cartCount}
           onCartOpen={() => setCartOpen(true)}
+          onBrandOpen={() => setPage('brand')}
         />
         <Hero />
         <Collection onSelect={setPage} />
@@ -183,7 +189,7 @@ function App() {
         <Video />
         <Product />
         <Store />
-        <AboutBrand />
+        <AboutBrand onBrandOpen={() => setPage('brand')} />
         <HotSpring />
         <SaleBanner />
         <Character />
@@ -197,6 +203,7 @@ function App() {
         onSignupOpen={() => openAuth('signup')}
         onCartOpen={() => setCartOpen(true)}
         onMemberOpen={setMemberPanel}
+        onBrandOpen={() => setPage('brand')}
       />
       <AuthModal isOpen={authOpen} initialMode={authMode} onClose={() => setAuthOpen(false)} />
       <MemberDrawer

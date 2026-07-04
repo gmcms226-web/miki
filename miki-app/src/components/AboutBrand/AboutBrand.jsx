@@ -1,6 +1,6 @@
 import './AboutBrand.css'
 
-function AboutBrand() {
+function AboutBrand({ onBrandOpen }) {
   return (
     <section id="about" className="about-section">
       <div className="about-header">
@@ -45,7 +45,7 @@ function AboutBrand() {
           내구성이 풍부한 천 등, 안심 안전의 만들기를 소중히 하고 있습니다.
         </p>
       </div>
-      <button className="about-btn">브랜드에 대해 자세히 알아보기</button>
+      <button className="about-btn" onClick={onBrandOpen}>브랜드에 대해 자세히 알아보기</button>
     </section>
   )
 }
