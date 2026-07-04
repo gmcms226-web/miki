@@ -1,14 +1,5 @@
-const imgSet = (id) => [1, 2, 3].map((n) => `/images/${id}-${n}.png`)
 const springAsset = (name) => `/images/spring-collection-2026/${name}`
 const summerAsset = (name) => `/images/summer-collection-2026/${name}`
-
-const pendingProduct = (id, name, price, keywords) => ({
-  id,
-  name,
-  price,
-  checkoutUrl: '',
-  keywords,
-})
 
 export const COLLECTIONS = {
   spring: {
@@ -92,7 +83,13 @@ export const COLLECTIONS = {
           springAsset('imgi_57_look04_img_03.png'),
         ],
         products: [
-          pendingProduct('spring-04', 'T-SHIRTS', 33000, ['봄', 'spring', 't-shirts', 'tshirt', '티셔츠']),
+          {
+            id: 'spring-04',
+            name: 'T-SHIRTS',
+            price: 33000,
+            checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_DMmJAal9JiR6c6fqXWsWvtcFt7iv23UyB3Y332ifVX1/redirect',
+            keywords: ['봄', 'spring', 't-shirts', 'tshirt', '티셔츠'],
+          },
         ],
       },
       {
@@ -107,7 +104,13 @@ export const COLLECTIONS = {
           springAsset('imgi_73_look05_img_03.png'),
         ],
         products: [
-          pendingProduct('spring-05', 'DRESS', 36000, ['봄', 'spring', 'dress', '원피스']),
+          {
+            id: 'spring-05',
+            name: 'DRESS',
+            price: 36000,
+            checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_RlUiik45BWRFm1DgRlejP3fGJSopwXRmjyXAa1DO2B0/redirect',
+            keywords: ['봄', 'spring', 'dress', '원피스'],
+          },
         ],
       },
       {
@@ -122,7 +125,13 @@ export const COLLECTIONS = {
           springAsset('imgi_77_look06_img_01.png'),
         ],
         products: [
-          pendingProduct('spring-06', 'SHORTALL', 34000, ['봄', 'spring', 'shortall', '쇼트올']),
+          {
+            id: 'spring-06',
+            name: 'SHORTALL',
+            price: 34000,
+            checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_I0vK0fKNzvpnVhYXmHbpXHsKjHfoeuOfsztXY0iYiqv/redirect',
+            keywords: ['봄', 'spring', 'shortall', '쇼트올'],
+          },
         ],
       },
       {
@@ -137,7 +146,13 @@ export const COLLECTIONS = {
           springAsset('imgi_89_look07_img_03.png'),
         ],
         products: [
-          pendingProduct('spring-07', 'SPRING STYLE', 31000, ['봄', 'spring', 'style', '코디']),
+          {
+            id: 'spring-07',
+            name: 'SPRING STYLE',
+            price: 31000,
+            checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_5GxlI26fkAICEmXk2EXyjNZU9ibNIianQYMQg3PAeog/redirect',
+            keywords: ['봄', 'spring', 'style', '코디'],
+          },
         ],
       },
       {
@@ -152,7 +167,13 @@ export const COLLECTIONS = {
           springAsset('imgi_97_look08_img_03.png'),
         ],
         products: [
-          pendingProduct('spring-08', 'SPRING OVERALLS', 37000, ['봄', 'spring', 'overalls', '오버롤']),
+          {
+            id: 'spring-08',
+            name: 'SPRING OVERALLS',
+            price: 37000,
+            checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_kLB2mjdRMHvi4Ex0Pg64lgF2ef64P1R5ILmjy3fI5wi/redirect',
+            keywords: ['봄', 'spring', 'overalls', '오버롤'],
+          },
         ],
       },
     ],
@@ -238,7 +259,13 @@ export const COLLECTIONS = {
           summerAsset('imgi_57_look04_img_03.png'),
         ],
         products: [
-          pendingProduct('summer-04', 'T-SHIRTS', 33000, ['여름', 'summer', 't-shirts', 'tshirt', '티셔츠']),
+          {
+            id: 'summer-04',
+            name: 'T-SHIRTS',
+            price: 33000,
+            checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_lLJYnDKV1Z61Ju9YeTJ0iqXHcXVN5z26tS9Kt3BsHjv/redirect',
+            keywords: ['여름', 'summer', 't-shirts', 'tshirt', '티셔츠'],
+          },
         ],
       },
       {
@@ -253,7 +280,13 @@ export const COLLECTIONS = {
           summerAsset('imgi_66_look05_img_03.png'),
         ],
         products: [
-          pendingProduct('summer-05', 'DRESS', 36000, ['여름', 'summer', 'dress', '원피스']),
+          {
+            id: 'summer-05',
+            name: 'DRESS',
+            price: 36000,
+            checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_gISMAuB3GNVzr6DQ6devDIlYgQCLx0zcYyB7943Hdt7/redirect',
+            keywords: ['여름', 'summer', 'dress', '원피스'],
+          },
         ],
       },
       {
@@ -268,7 +301,13 @@ export const COLLECTIONS = {
           summerAsset('imgi_74_look06_img_03.png'),
         ],
         products: [
-          pendingProduct('summer-06', 'SHORTALL', 34000, ['여름', 'summer', 'shortall', '쇼트올']),
+          {
+            id: 'summer-06',
+            name: 'SHORTALL',
+            price: 34000,
+            checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_t66ButhpbWxp4lraoDt4tmutDGB5i2sDWNZUb1E8Y3W/redirect',
+            keywords: ['여름', 'summer', 'shortall', '쇼트올'],
+          },
         ],
       },
       {
@@ -283,7 +322,13 @@ export const COLLECTIONS = {
           summerAsset('imgi_86_look07_img_03.png'),
         ],
         products: [
-          pendingProduct('summer-07', 'T-SHIRTS', 31000, ['여름', 'summer', 't-shirts', 'tshirt', '티셔츠']),
+          {
+            id: 'summer-07',
+            name: 'T-SHIRTS',
+            price: 31000,
+            checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_UOfqBTnoHR1oMa6n03ygUuQvnl9oXdDBEH8xc0L3Ola/redirect',
+            keywords: ['여름', 'summer', 't-shirts', 'tshirt', '티셔츠'],
+          },
         ],
       },
       {
@@ -298,7 +343,13 @@ export const COLLECTIONS = {
           summerAsset('imgi_91_look08_img_03.png'),
         ],
         products: [
-          pendingProduct('summer-08', 'T-SHIRTS', 31000, ['여름', 'summer', 't-shirts', 'tshirt', '티셔츠']),
+          {
+            id: 'summer-08',
+            name: 'T-SHIRTS',
+            price: 31000,
+            checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_Dzb1ybOyjsThoMmwFDedSoh1afRawz6S6lhzs1wujv7/redirect',
+            keywords: ['여름', 'summer', 't-shirts', 'tshirt', '티셔츠'],
+          },
         ],
       },
       {
@@ -313,7 +364,13 @@ export const COLLECTIONS = {
           summerAsset('imgi_104_look09_img_03.png'),
         ],
         products: [
-          pendingProduct('summer-09', 'JINBEI', 38000, ['여름', 'summer', 'jinbei', '진베이']),
+          {
+            id: 'summer-09',
+            name: 'JINBEI',
+            price: 38000,
+            checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_cxNGnlhnkCf1c0noxmrv4to8xmpiVBuecx1KK020nXZ/redirect',
+            keywords: ['여름', 'summer', 'jinbei', '진베이'],
+          },
         ],
       },
       {
@@ -328,7 +385,13 @@ export const COLLECTIONS = {
           summerAsset('imgi_111_look10_img_03.png'),
         ],
         products: [
-          pendingProduct('summer-10', 'JINBEI', 38000, ['여름', 'summer', 'jinbei', '진베이']),
+          {
+            id: 'summer-10',
+            name: 'JINBEI',
+            price: 38000,
+            checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_mPOapeMwn1S7Yw8JTbMYqsXEHri80DsbLE9SO175zlw/redirect',
+            keywords: ['여름', 'summer', 'jinbei', '진베이'],
+          },
         ],
       },
       {
@@ -343,7 +406,13 @@ export const COLLECTIONS = {
           summerAsset('imgi_121_look11_img_03.png'),
         ],
         products: [
-          pendingProduct('summer-11', 'JINBEI OVERALLS', 39000, ['여름', 'summer', 'jinbei', 'overalls', '오버롤']),
+          {
+            id: 'summer-11',
+            name: 'JINBEI OVERALLS',
+            price: 37000,
+            checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_zZwgKAt5tnnMzu9pbgyjlxduHFvH8VTgWdwMy0psGnO/redirect',
+            keywords: ['여름', 'summer', 'jinbei', 'overalls', '오버롤'],
+          },
         ],
       },
     ],
