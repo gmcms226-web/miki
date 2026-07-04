@@ -103,14 +103,24 @@ function Sidebar({ onSelectCollection }) {
 
       <div className="collection-slider">
         <div className={`collection-item spring ${activeIdx === 0 ? 'visible' : 'slide-left'}`}>
-          <div className="collection-img-wrap">
-            <img src="/images/spring-collection.png" alt="Spring Collection" />
-          </div>
+          <button
+            type="button"
+            className="collection-img-wrap"
+            onClick={() => onSelectCollection('spring')}
+          >
+            <img src="/images/brand_1.png" alt="Spring Collection" />
+            <span className="collection-badge">SPRING</span>
+          </button>
         </div>
         <div className={`collection-item summer ${activeIdx === 1 ? 'visible' : 'slide-right'}`}>
-          <div className="collection-img-wrap">
-            <img src="/images/summer-collection.png" alt="Summer Collection" />
-          </div>
+          <button
+            type="button"
+            className="collection-img-wrap"
+            onClick={() => onSelectCollection('summer')}
+          >
+            <img src="/images/brand_2.png" alt="Summer Collection" />
+            <span className="collection-badge">SUMMER</span>
+          </button>
         </div>
       </div>
     </div>
