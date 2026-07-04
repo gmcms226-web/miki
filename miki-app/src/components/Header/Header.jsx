@@ -5,12 +5,17 @@ const navItems = [
   { label: '브랜드정보', action: 'brand' },
   { label: '픽업', action: 'pickup' },
   { label: '매장', href: '#store' },
-  { label: '자주묻는질문', href: '#faq' },
-  { label: '문의', href: '#contact' },
+  { label: '자주묻는질문', action: 'faq' },
+  { label: '문의', action: 'contact' },
 ]
 
 function Header({ onMenuOpen, user, onLoginOpen, onLogout, cartCount, onCartOpen, onBrandOpen, onPickupOpen }) {
-  const navActions = { brand: onBrandOpen, pickup: onPickupOpen }
+  const navActions = {
+    brand: onBrandOpen,
+    pickup: onPickupOpen,
+    faq: () => alert('서비스 준비중입니다.'),
+    contact: () => alert('점검중입니다.'),
+  }
 
   return (
     <header className="main-header">

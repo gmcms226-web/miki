@@ -91,9 +91,6 @@ function HamburgerMenu({
             <button type="button" onClick={openBrand}>브랜드 정보</button>
           </li>
           <li>
-            <button type="button" onClick={openPickup}>픽업</button>
-          </li>
-          <li>
             <button type="button" onClick={openPickup}>아기 속옷</button>
           </li>
           <li><a href="#shop" onClick={onClose}>에브리데이 시리즈</a></li>

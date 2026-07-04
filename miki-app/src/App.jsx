@@ -21,6 +21,8 @@ import CartDrawer from './components/CartDrawer/CartDrawer'
 import MemberDrawer from './components/MemberDrawer/MemberDrawer'
 import BrandPage from './components/BrandPage/BrandPage'
 import PickupPage from './components/PickupPage/PickupPage'
+import ShopSelectModal from './components/ShopSelectModal/ShopSelectModal'
+import TopButton from './components/TopButton/TopButton'
 import './App.css'
 
 function App() {
@@ -29,6 +31,7 @@ function App() {
   const [authOpen, setAuthOpen] = useState(false)
   const [authMode, setAuthMode] = useState('login')
   const [cartOpen, setCartOpen] = useState(false)
+  const [shopSelectOpen, setShopSelectOpen] = useState(false)
   const [memberPanel, setMemberPanel] = useState(null)
   const [cartItems, setCartItems] = useState([])
   const [favoriteItems, setFavoriteItems] = useState([])
@@ -153,11 +156,21 @@ function App() {
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
   if (page === 'brand') {
-    return <BrandPage onBack={() => setPage('home')} onSelectCollection={setPage} />
+    return (
+      <>
+        <BrandPage onBack={() => setPage('home')} onSelectCollection={setPage} />
+        <TopButton />
+      </>
+    )
   }
 
   if (page === 'pickup') {
-    return <PickupPage onBack={() => setPage('home')} />
+    return (
+      <>
+        <PickupPage onBack={() => setPage('home')} />
+        <TopButton />
+      </>
+    )
   }
 
   if (page !== 'home') {
@@ -184,6 +197,7 @@ function App() {
           onRemove={removeCartItem}
           onBuy={handleBuy}
         />
+        <TopButton raised />
       </>
     )
   }
@@ -209,7 +223,7 @@ function App() {
         <Shop />
         <Video />
         <Product onPickupOpen={() => setPage('pickup')} />
-        <Store />
+        <Store onOnlineShopOpen={() => setShopSelectOpen(true)} />
         <AboutBrand onBrandOpen={() => setPage('brand')} />
         <HotSpring />
         <SaleBanner />
@@ -228,6 +242,14 @@ function App() {
         onPickupOpen={() => setPage('pickup')}
       />
       <AuthModal isOpen={authOpen} initialMode={authMode} onClose={() => setAuthOpen(false)} />
+      <ShopSelectModal
+        isOpen={shopSelectOpen}
+        onClose={() => setShopSelectOpen(false)}
+        onSelect={(season) => {
+          setShopSelectOpen(false)
+          setPage(season)
+        }}
+      />
       <MemberDrawer
         panel={memberPanel}
         user={user}
@@ -251,6 +273,7 @@ function App() {
         onRemove={removeCartItem}
         onBuy={handleBuy}
       />
+      <TopButton />
     </div>
   )
 }

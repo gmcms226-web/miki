@@ -1,6 +1,6 @@
 import './Store.css'
 
-function Store() {
+function Store({ onOnlineShopOpen }) {
   return (
     <section id="store" className="store-section">
       <p className="store-label">매장</p>
@@ -22,7 +22,7 @@ function Store() {
         >
           추천 더보기
         </button>
-        <button className="store-btn-online">
+        <button className="store-btn-online" onClick={onOnlineShopOpen}>
           <img src="/images/shop.png" alt="" className="store-btn-icon" />
           ONLINE SHOP
         </button>

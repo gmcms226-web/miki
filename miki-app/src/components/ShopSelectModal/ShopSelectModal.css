@@ -1,0 +1,81 @@
+.shop-select-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.shop-select-modal {
+  position: relative;
+  width: 400px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 40px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+
+.shop-select-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 24px;
+  color: #999;
+  background: none;
+  padding: 0;
+  line-height: 1;
+}
+
+.shop-select-title {
+  font-family: 'Jua', sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  color: #222;
+  margin: 0;
+}
+
+.shop-select-desc {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 14px;
+  color: #555;
+  margin: 0 0 12px;
+}
+
+.shop-select-options {
+  display: flex;
+  gap: 12px;
+}
+
+.shop-select-option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  border: 2px solid #eee;
+  border-radius: 16px;
+  background: #fff;
+  transition: border-color 0.15s ease;
+}
+
+.shop-select-option:hover {
+  border-color: #FB8E4E;
+}
+
+.shop-select-option img {
+  width: 100%;
+  aspect-ratio: 651 / 461;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.shop-select-label {
+  font-family: 'Jua', sans-serif;
+  font-size: 16px;
+  color: #FB8E4E;
+}

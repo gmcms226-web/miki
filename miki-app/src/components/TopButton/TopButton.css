@@ -1,0 +1,25 @@
+.top-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 110;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.top-button.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 컬렉션 페이지의 장바구니 플로팅 버튼과 겹치지 않게 위로 */
+.top-button.raised {
+  bottom: 92px;
+}
+
+.top-button img {
+  width: 62px;
+  height: auto;
+  display: block;
+}
