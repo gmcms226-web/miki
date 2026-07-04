@@ -20,11 +20,12 @@ import HamburgerMenu from './components/HamburgerMenu/HamburgerMenu'
 import CartDrawer from './components/CartDrawer/CartDrawer'
 import MemberDrawer from './components/MemberDrawer/MemberDrawer'
 import BrandPage from './components/BrandPage/BrandPage'
+import PickupPage from './components/PickupPage/PickupPage'
 import './App.css'
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [page, setPage] = useState('home') // 'home' | 'spring' | 'summer' | 'brand'
+  const [page, setPage] = useState('home') // 'home' | 'spring' | 'summer' | 'brand' | 'pickup'
   const [authOpen, setAuthOpen] = useState(false)
   const [authMode, setAuthMode] = useState('login')
   const [cartOpen, setCartOpen] = useState(false)
@@ -155,6 +156,10 @@ function App() {
     return <BrandPage onBack={() => setPage('home')} onSelectCollection={setPage} />
   }
 
+  if (page === 'pickup') {
+    return <PickupPage onBack={() => setPage('home')} />
+  }
+
   if (page !== 'home') {
     return (
       <>
@@ -197,12 +202,13 @@ function App() {
           cartCount={cartCount}
           onCartOpen={openCart}
           onBrandOpen={() => setPage('brand')}
+          onPickupOpen={() => setPage('pickup')}
         />
         <Hero />
         <Collection onSelect={setPage} />
         <Shop />
         <Video />
-        <Product />
+        <Product onPickupOpen={() => setPage('pickup')} />
         <Store />
         <AboutBrand onBrandOpen={() => setPage('brand')} />
         <HotSpring />
@@ -219,6 +225,7 @@ function App() {
         onCartOpen={openCart}
         onMemberOpen={openMemberPanel}
         onBrandOpen={() => setPage('brand')}
+        onPickupOpen={() => setPage('pickup')}
       />
       <AuthModal isOpen={authOpen} initialMode={authMode} onClose={() => setAuthOpen(false)} />
       <MemberDrawer

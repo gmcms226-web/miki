@@ -1,0 +1,341 @@
+.pickup-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 32px 24px 56px;
+  background: #fff;
+}
+
+.pickup-page-back {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+  background: none;
+  padding: 0;
+}
+
+/* 타이틀 영역 — 다른 페이지 헤더와 동일 패턴 */
+.pickup-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  padding: 36px 0 12px;
+}
+
+.pickup-subtitle {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #555;
+  margin: 0;
+}
+
+.pickup-title {
+  font-family: 'Jua', sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  color: #222;
+  margin: 0;
+}
+
+.pickup-dots {
+  height: 6px;
+  width: auto;
+}
+
+/* 히어로 */
+.pickup-hero {
+  padding: 28px 0 36px;
+  text-align: center;
+}
+
+.pickup-hero-headline {
+  font-family: 'Jua', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.5;
+  color: #e56a8c;
+  margin: 0 0 16px;
+}
+
+.pickup-hero-text {
+  max-width: 420px;
+  margin: 0 auto 24px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.9;
+}
+
+.pickup-hero-img {
+  width: min(100%, 350px);
+  height: auto;
+}
+
+/* 섹션 공통 타이틀 */
+.pickup-section-title {
+  font-family: 'Jua', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  text-align: center;
+  margin: 0 0 24px;
+}
+
+.pickup-section-title.pink {
+  color: #e56a8c;
+}
+
+.pickup-section-title.blue {
+  color: #5a9fd4;
+}
+
+/* 포인트 리스트 */
+.pickup-points {
+  padding: 24px 0 32px;
+}
+
+.pickup-point-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.pickup-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.pickup-point-number {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: #fff;
+  font-family: 'Jua', sans-serif;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pickup-point-number.pink {
+  background: #e56a8c;
+}
+
+.pickup-point-number.blue {
+  background: #5a9fd4;
+}
+
+.pickup-point-title {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #222;
+  margin: 4px 0 6px;
+}
+
+.pickup-point-desc {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Q&A 아코디언 */
+.pickup-qna {
+  padding: 24px 0 32px;
+}
+
+.pickup-qna-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pickup-qna-item {
+  border: 2px solid #fbdce6;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.pickup-qna-item.open {
+  border-color: #e56a8c;
+}
+
+.pickup-qna-question {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 16px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+  text-align: left;
+}
+
+.pickup-qna-mark {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #e56a8c;
+  color: #fff;
+  font-family: 'Jua', sans-serif;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pickup-qna-mark.answer {
+  background: #5a9fd4;
+  float: left;
+  margin-right: 10px;
+}
+
+.pickup-qna-arrow {
+  margin-left: auto;
+  font-size: 18px;
+  color: #e56a8c;
+}
+
+.pickup-qna-answer {
+  padding: 0 16px 16px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* 엄마들의 목소리 */
+.pickup-voice {
+  padding: 32px 20px;
+  margin: 0 -24px;
+  background: #fdf3f6;
+}
+
+.pickup-voice-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.pickup-voice-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 14px;
+  background: #fff;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.pickup-voice-img {
+  width: 56px;
+  height: auto;
+}
+
+.pickup-voice-text {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 12px;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* 상품 라인업 */
+.pickup-lineup {
+  padding: 32px 0;
+}
+
+.pickup-lineup-note {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 13px;
+  color: #555;
+  text-align: center;
+  margin: -12px 0 24px;
+}
+
+.pickup-lineup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 16px;
+}
+
+.pickup-lineup-item {
+  text-align: center;
+}
+
+.pickup-lineup-imgs {
+  display: flex;
+  gap: 6px;
+}
+
+.pickup-lineup-imgs img {
+  width: calc(50% - 3px);
+  height: auto;
+  border-radius: 10px;
+  background: #f7f7f7;
+}
+
+.pickup-lineup-name {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #222;
+  margin: 10px 0 0;
+}
+
+/* 특징 상세 */
+.pickup-features {
+  padding: 24px 0 8px;
+}
+
+.pickup-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pickup-feature {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.pickup-feature-img {
+  flex-shrink: 0;
+  width: 180px;
+  height: auto;
+  border-radius: 14px;
+}
+
+.pickup-feature-number {
+  font-family: 'Jua', sans-serif;
+  font-size: 15px;
+  color: #5a9fd4;
+}
+
+.pickup-feature-title {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #222;
+  margin: 4px 0 8px;
+}
+
+.pickup-feature-desc {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}

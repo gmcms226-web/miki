@@ -1,6 +1,6 @@
 import './Product.css'
 
-function Product() {
+function Product({ onPickupOpen }) {
   return (
     <section id="product" className="product-section">
       <div className="product-item">
@@ -12,7 +12,7 @@ function Product() {
         <p className="product-desc">
           섬세한 아기의 피부 때문에 착용감이 좋은 촉감만 것은 물론, 매일의 세탁에서도 형태 무너지지 않게, 세세한 봉제에도 구애되었습니다. 안심의 일본제입니다.
         </p>
-        <button className="product-btn">추천 더 보기</button>
+        <button className="product-btn" onClick={onPickupOpen}>추천 더 보기</button>
       </div>
     </section>
   )

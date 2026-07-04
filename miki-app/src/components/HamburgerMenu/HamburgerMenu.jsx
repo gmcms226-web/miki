@@ -9,10 +9,16 @@ function HamburgerMenu({
   onCartOpen,
   onMemberOpen,
   onBrandOpen,
+  onPickupOpen,
 }) {
   const openBrand = () => {
     onClose()
     onBrandOpen()
+  }
+
+  const openPickup = () => {
+    onClose()
+    onPickupOpen()
   }
 
   const openCollection = (season) => {
@@ -84,8 +90,12 @@ function HamburgerMenu({
           <li>
             <button type="button" onClick={openBrand}>브랜드 정보</button>
           </li>
-          <li><a href="#product" onClick={onClose}>픽업</a></li>
-          <li><a href="#product" onClick={onClose}>아기 속옷</a></li>
+          <li>
+            <button type="button" onClick={openPickup}>픽업</button>
+          </li>
+          <li>
+            <button type="button" onClick={openPickup}>아기 속옷</button>
+          </li>
           <li><a href="#shop" onClick={onClose}>에브리데이 시리즈</a></li>
         </ul>
 

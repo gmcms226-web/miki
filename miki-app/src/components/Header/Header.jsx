@@ -3,13 +3,15 @@ import './Header.css'
 const navItems = [
   { label: '컬렉션', href: '#collection' },
   { label: '브랜드정보', action: 'brand' },
-  { label: '픽업', href: '#product' },
+  { label: '픽업', action: 'pickup' },
   { label: '매장', href: '#store' },
   { label: '자주묻는질문', href: '#faq' },
   { label: '문의', href: '#contact' },
 ]
 
-function Header({ onMenuOpen, user, onLoginOpen, onLogout, cartCount, onCartOpen, onBrandOpen }) {
+function Header({ onMenuOpen, user, onLoginOpen, onLogout, cartCount, onCartOpen, onBrandOpen, onPickupOpen }) {
+  const navActions = { brand: onBrandOpen, pickup: onPickupOpen }
+
   return (
     <header className="main-header">
       <div className="header-top">
@@ -45,8 +47,8 @@ function Header({ onMenuOpen, user, onLoginOpen, onLogout, cartCount, onCartOpen
 
       <nav className="header-nav">
         {navItems.map(item => (
-          item.action === 'brand' ? (
-            <button key={item.label} type="button" className="nav-item" onClick={onBrandOpen}>
+          item.action ? (
+            <button key={item.label} type="button" className="nav-item" onClick={navActions[item.action]}>
               {item.label}
             </button>
           ) : (

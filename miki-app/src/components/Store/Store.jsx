@@ -16,7 +16,12 @@ function Store() {
         장난감 상자를 뒤집은 것 같은 활기찬 가게에서 고객을 기다리고 있습니다.
       </p>
       <div className="store-buttons">
-        <button className="store-btn-more">추천 더보기</button>
+        <button
+          className="store-btn-more"
+          onClick={() => window.open('https://www.hotbiscuits.jp/shop/', '_blank', 'noopener')}
+        >
+          추천 더보기
+        </button>
         <button className="store-btn-online">
           <img src="/images/shop.png" alt="" className="store-btn-icon" />
           ONLINE SHOP
