@@ -419,15 +419,95 @@ export const COLLECTIONS = {
   },
 }
 
-export const getCollectionProducts = () => (
-  Object.entries(COLLECTIONS).flatMap(([season, collection]) => (
+// 픽업(아기 속옷) 판매 상품 — 이미지는 public/images/baby/
+// checkoutUrl이 null이면 BUY 시 "결제 준비 중" 안내 (Polar 등록 후 링크 채우기)
+const babyItemAsset = (name) => `/images/baby/${name}`
+
+export const PICKUP_PRODUCTS = [
+  {
+    id: 'baby-01',
+    name: '무지 후라이스 속옷',
+    price: 12000,
+    image: babyItemAsset('mooji_01.jpg'),
+    checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_TGFvxtquMIHWMkVbC0AuAxDCYFRu1XibirEnh0GWQky/redirect',
+    keywords: ['속옷', '배냇', '아기', '신생아', 'baby', '무지'],
+  },
+  {
+    id: 'baby-02',
+    name: '캐릭터 프린트 A',
+    price: 15000,
+    image: babyItemAsset('A_01.jpg'),
+    checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_jBJvGUZWrGhfIrNZDAV9YKSxH3iVO7mOtAUw71fuIWW/redirect',
+    keywords: ['속옷', '배냇', '아기', '신생아', 'baby', '캐릭터'],
+  },
+  {
+    id: 'baby-03',
+    name: '캐릭터 프린트 B',
+    price: 15000,
+    image: babyItemAsset('B_01.jpg'),
+    checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_yRLjwBDiNC7M7jWpaD0DZIGk5ccMUZBEWaYMi3MNySx/redirect',
+    keywords: ['속옷', '배냇', '아기', '신생아', 'baby', '캐릭터'],
+  },
+  {
+    id: 'baby-04',
+    name: '캐릭터 프린트 C',
+    price: 15000,
+    image: babyItemAsset('c.jpg'),
+    checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_xgEKsuqzHbQ4khmZfi5FBU8JvqMzjYfnevhYr2znO8q/redirect',
+    keywords: ['속옷', '배냇', '아기', '신생아', 'baby', '캐릭터'],
+  },
+  {
+    id: 'baby-05',
+    name: '잔꽃 무늬 속옷',
+    price: 16000,
+    image: babyItemAsset('flower_01.jpg'),
+    checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_aUTaIk58WYXxODm402JvEjCv1ZMoufQyEntLO0jw6tL/redirect',
+    keywords: ['속옷', '배냇', '아기', '신생아', 'baby', '꽃', 'flower'],
+  },
+  {
+    id: 'baby-06',
+    name: '자동차 무늬 속옷',
+    price: 16000,
+    image: babyItemAsset('car_01.jpg'),
+    checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_by40cYu07ZsV0ygbPnfOZbweZiJ8Rflnu8HDC1QtYKm/redirect',
+    keywords: ['속옷', '배냇', '아기', '신생아', 'baby', '자동차', 'car'],
+  },
+  {
+    id: 'baby-07',
+    name: '동물 무늬 속옷',
+    price: 16000,
+    image: babyItemAsset('animal_01.jpg'),
+    checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_bfgM2WNvXiWDpVspM50RDvM9VmeXVhj55yzAN2sA0W0/redirect',
+    keywords: ['속옷', '배냇', '아기', '신생아', 'baby', '동물', 'animal'],
+  },
+  {
+    id: 'baby-08',
+    name: '컬러 후라이스 속옷',
+    price: 14000,
+    image: babyItemAsset('color_01.jpg'),
+    checkoutUrl: 'https://sandbox-api.polar.sh/v1/checkout-links/polar_cl_95qO4z14lJURiqEa1iZPsd5Q6gY4a7stmsGZD3DkrnZ/redirect',
+    keywords: ['속옷', '배냇', '아기', '신생아', 'baby', '컬러'],
+  },
+]
+
+export const getCollectionProducts = () => ([
+  ...Object.entries(COLLECTIONS).flatMap(([season, collection]) => (
     collection.looks.flatMap((look) => (
       look.products.map((product) => ({
         ...product,
         season,
         seasonLabel: collection.title.replace(' COLLECTION', ''),
+        lookNumber: look.number,
         lookTitle: look.title,
       }))
     ))
-  ))
-)
+  )),
+  // 픽업 속옷도 검색/장바구니 흐름에 포함 (season 'pickup' → 픽업 페이지로 이동)
+  ...PICKUP_PRODUCTS.map((product, index) => ({
+    ...product,
+    season: 'pickup',
+    seasonLabel: 'BABY',
+    lookNumber: String(index + 1).padStart(2, '0'),
+    lookTitle: 'BABY UNDERWEAR',
+  })),
+])

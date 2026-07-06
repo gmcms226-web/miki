@@ -1,11 +1,12 @@
-.collection-page {
+.look-detail {
   max-width: 600px;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 32px 24px 56px;
   background: #fff;
 }
 
-.collection-page-back {
+.look-detail-back {
   font-family: 'Pretendard', sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -14,7 +15,7 @@
   padding: 0;
 }
 
-.collection-cart-float {
+.look-detail-cart {
   position: fixed;
   right: calc(50% - 278px);
   bottom: 24px;
@@ -32,7 +33,7 @@
   cursor: pointer;
 }
 
-.collection-cart-float span {
+.look-detail-cart span {
   position: absolute;
   top: -5px;
   right: -5px;
@@ -48,104 +49,20 @@
   line-height: 14px;
 }
 
-.collection-hero {
-  padding: 28px 0 36px;
-  text-align: center;
-}
-
-.collection-hero-img {
-  width: min(100%, 420px);
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 80px;
-}
-
-.collection-page-year {
-  margin: 28px 0 4px;
+.look-detail-collection {
+  margin: 28px 0 0;
   font-family: 'Jua', sans-serif;
-  font-size: 20px;
-  color: #FB8E4E;
-}
-
-.collection-page-title {
-  font-family: 'Jua', sans-serif;
-  font-weight: 400;
-  font-size: 34px;
-  color: #222;
-  text-align: center;
-  margin: 0;
-}
-
-.collection-page-intro {
-  max-width: 420px;
-  margin: 18px auto 0;
-  font-family: 'Pretendard', sans-serif;
-  font-size: 15px;
-  line-height: 1.8;
-  color: #555;
-}
-
-.look-index {
-  padding: 24px 0 10px;
-  border-top: 2px solid #FB8E4E;
-  border-bottom: 2px solid #FB8E4E;
-}
-
-.look-index-label {
-  margin: 0 0 14px;
-  font-family: 'Jua', sans-serif;
-  font-size: 22px;
+  font-size: 18px;
   color: #FB8E4E;
   text-align: center;
 }
 
-.look-index-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-
-.look-index-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 88px;
-  gap: 6px;
-  padding: 8px;
-  border: 1px solid #f4d0bc;
-  border-radius: 8px;
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  color: #333;
-  background: #fff;
-}
-
-.look-index-item:hover {
-  color: #fff;
-  background: #FB8E4E;
-  border-color: #FB8E4E;
-}
-
-.look-index-img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.look-section {
-  padding: 48px 0 8px;
-  scroll-margin-top: 128px;
-}
-
-.look-heading {
-  margin-bottom: 18px;
+.look-detail-heading {
+  margin: 10px 0 24px;
   text-align: center;
 }
 
-.look-number {
+.look-detail-number {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -159,15 +76,15 @@
   font-weight: 800;
 }
 
-.look-title {
+.look-detail-title {
   margin: 10px 0 0;
   font-family: 'Jua', sans-serif;
   font-weight: 400;
-  font-size: 28px;
+  font-size: 32px;
   color: #222;
 }
 
-.look-visual {
+.look-detail-visual {
   display: grid;
   grid-template-columns: 340px 160px;
   align-items: center;
@@ -176,8 +93,8 @@
   justify-items: center;
 }
 
-.look-main-img,
-.look-sub-images img {
+.look-detail-main-img,
+.look-detail-sub-images img {
   aspect-ratio: 1 / 1;
   object-fit: cover;
   background: #f7f7f7;
@@ -185,11 +102,11 @@
   border: 2px solid #FB8E4E;
 }
 
-.look-main-img {
+.look-detail-main-img {
   width: 340px;
 }
 
-.look-sub-images {
+.look-detail-sub-images {
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   align-content: center;
@@ -198,20 +115,12 @@
   width: 160px;
 }
 
-.look-sub-images img {
+.look-detail-sub-images img {
   width: 160px;
   min-height: 0;
 }
 
-.look-section.reverse .look-main-img {
-  order: 2;
-}
-
-.look-section.reverse .look-sub-images {
-  order: 1;
-}
-
-.look-model {
+.look-detail-model {
   margin: 14px 0 0;
   font-family: 'Pretendard', sans-serif;
   font-size: 13px;
@@ -220,12 +129,12 @@
   text-align: center;
 }
 
-.look-products {
-  margin-top: 18px;
+.look-detail-products {
+  margin-top: 24px;
   border-top: 1px solid #eee;
 }
 
-.look-product {
+.look-detail-product {
   display: grid;
   grid-template-columns: 1fr auto auto auto auto;
   align-items: center;
@@ -234,23 +143,23 @@
   border-bottom: 1px solid #eee;
 }
 
-.look-product-name {
+.look-detail-product-name {
   font-family: 'Pretendard', sans-serif;
   font-weight: 700;
   font-size: 14px;
   color: #222;
 }
 
-.look-product-price {
+.look-detail-product-price {
   font-family: 'Pretendard', sans-serif;
   font-size: 13px;
   color: #555;
   white-space: nowrap;
 }
 
-.look-product-favorite,
-.look-product-cart,
-.look-product-buy {
+.look-detail-favorite,
+.look-detail-add-cart,
+.look-detail-buy {
   height: 32px;
   padding: 0 14px;
   border-radius: 16px;
@@ -260,7 +169,7 @@
 }
 
 /* 관심 하트 버튼 — 원형 아이콘 */
-.look-product-favorite {
+.look-detail-favorite {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -272,24 +181,24 @@
   color: #FB8E4E;
 }
 
-.look-product-favorite:hover,
-.look-product-favorite.active {
+.look-detail-favorite:hover,
+.look-detail-favorite.active {
   border-color: #e60011;
   background: #e60011;
   color: #fff;
 }
 
-.look-product-favorite:hover svg {
+.look-detail-favorite:hover svg {
   fill: currentColor;
 }
 
-.look-product-cart {
+.look-detail-add-cart {
   border: 1px solid #008950;
   background: #fff;
   color: #008950;
 }
 
-.look-product-buy {
+.look-detail-buy {
   min-width: 58px;
   border: 0;
   background: #008950;
@@ -297,53 +206,26 @@
 }
 
 @media (max-width: 520px) {
-  .collection-page {
+  .look-detail {
     padding: 24px 18px 48px;
   }
 
-  .collection-hero-img {
-    border-radius: 56px;
-  }
-
-  .collection-cart-float {
+  .look-detail-cart {
     right: 18px;
     bottom: 18px;
   }
 
-  .look-index-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .look-visual {
+  .look-detail-visual {
     grid-template-columns: 1fr;
   }
 
-  .look-main-img {
+  .look-detail-main-img {
     width: min(100%, 320px);
   }
 
-  .look-sub-images {
+  .look-detail-sub-images {
     grid-template-columns: 1fr;
     grid-template-rows: none;
     width: 100%;
-  }
-
-  .look-sub-images img {
-    width: min(100%, 320px);
-  }
-
-  .look-section.reverse .look-main-img,
-  .look-section.reverse .look-sub-images {
-    order: initial;
-  }
-
-  .look-product {
-    grid-template-columns: 1fr auto;
-  }
-
-  .look-product-favorite,
-  .look-product-cart,
-  .look-product-buy {
-    grid-column: 1 / -1;
   }
 }

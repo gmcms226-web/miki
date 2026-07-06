@@ -106,10 +106,13 @@
   padding: 2px;
 }
 
-.hamburger-flower img {
-  width: 38px;
-  height: 38px;
-  object-fit: contain;
+.hamburger-flower svg {
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.hamburger-flower:hover svg {
+  transform: rotate(20deg) scale(1.05);
 }
 
 /* 2행: 네비게이션 */

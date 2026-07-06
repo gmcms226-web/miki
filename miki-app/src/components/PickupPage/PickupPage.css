@@ -56,7 +56,7 @@
   font-weight: 400;
   font-size: 24px;
   line-height: 1.5;
-  color: #e56a8c;
+  color: #FB8E4E;
   margin: 0 0 16px;
 }
 
@@ -84,7 +84,7 @@
 }
 
 .pickup-section-title.pink {
-  color: #e56a8c;
+  color: #FB8E4E;
 }
 
 .pickup-section-title.blue {
@@ -122,7 +122,7 @@
 }
 
 .pickup-point-number.pink {
-  background: #e56a8c;
+  background: #FB8E4E;
 }
 
 .pickup-point-number.blue {
@@ -157,13 +157,13 @@
 }
 
 .pickup-qna-item {
-  border: 2px solid #fbdce6;
+  border: 2px solid #f4d0bc;
   border-radius: 16px;
   overflow: hidden;
 }
 
 .pickup-qna-item.open {
-  border-color: #e56a8c;
+  border-color: #FB8E4E;
 }
 
 .pickup-qna-question {
@@ -184,7 +184,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: #e56a8c;
+  background: #FB8E4E;
   color: #fff;
   font-family: 'Jua', sans-serif;
   font-size: 14px;
@@ -202,7 +202,7 @@
 .pickup-qna-arrow {
   margin-left: auto;
   font-size: 18px;
-  color: #e56a8c;
+  color: #FB8E4E;
 }
 
 .pickup-qna-answer {
@@ -218,7 +218,7 @@
 .pickup-voice {
   padding: 32px 20px;
   margin: 0 -24px;
-  background: #fdf3f6;
+  background: #fff7f2;
 }
 
 .pickup-voice-list {
@@ -267,31 +267,196 @@
 .pickup-lineup-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px 16px;
+  gap: 12px;
 }
 
+/* 커머스형 카드: 상단 이미지 영역 + 하단 정보 영역 */
 .pickup-lineup-item {
-  text-align: center;
-}
-
-.pickup-lineup-imgs {
   display: flex;
-  gap: 6px;
+  flex-direction: column;
+  border: 1px solid #f4d0bc;
+  border-radius: 16px;
+  background: #fff;
+  overflow: hidden;
+  transition: border-color 0.2s;
 }
 
-.pickup-lineup-imgs img {
-  width: calc(50% - 3px);
-  height: auto;
-  border-radius: 10px;
-  background: #f7f7f7;
+.pickup-lineup-item:hover {
+  border-color: #FB8E4E;
 }
 
-.pickup-lineup-name {
+.pickup-card-media {
+  position: relative;
+  padding: 14px 14px 22px;
+  background: #fff7f2;
+}
+
+.pickup-card-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #fff;
+  display: block;
+}
+
+/* 이미지 넘김 화살표 */
+.pickup-card-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #f4d0bc;
+  border-radius: 50%;
+  background: #fff;
+  color: #FB8E4E;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.pickup-card-nav.prev {
+  left: 6px;
+}
+
+.pickup-card-nav.next {
+  right: 6px;
+}
+
+.pickup-card-nav:hover {
+  border-color: #FB8E4E;
+}
+
+/* 이미지 위치 점 표시 */
+.pickup-card-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 7px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.pickup-card-dots button {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #f4d0bc;
+}
+
+.pickup-card-dots button.on {
+  background: #FB8E4E;
+}
+
+.pickup-card-fav {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #f4d0bc;
+  border-radius: 50%;
+  background: #fff;
+  color: #FB8E4E;
+}
+
+.pickup-card-fav svg {
+  width: 19px;
+  height: 19px;
+}
+
+.pickup-card-fav:hover {
+  border-color: #e60011;
+  background: #e60011;
+  color: #fff;
+}
+
+.pickup-card-fav:hover svg {
+  fill: currentColor; /* 외곽선만이 아니라 하트 속까지 흰색으로 채움 */
+}
+
+.pickup-card-fav.active {
+  border-color: #e60011;
+  background: #e60011;
+  color: #fff;
+}
+
+.pickup-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 7px;
+  padding: 12px 14px 14px;
+  text-align: left;
+}
+
+.pickup-card-name {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #222;
+}
+
+.pickup-card-tags {
+  display: flex;
+  gap: 4px;
+}
+
+.pickup-card-tags span {
+  padding: 2px 8px;
+  border: 1px solid #eee;
+  border-radius: 999px;
   font-family: 'Pretendard', sans-serif;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 10px;
+  color: #666;
+}
+
+.pickup-card-desc {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #666;
+}
+
+.pickup-card-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid #f5f5f5;
+}
+
+.pickup-card-price span {
+  display: block;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #999;
+}
+
+.pickup-card-price strong {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 15px;
   color: #222;
-  margin: 10px 0 0;
+}
+
+.pickup-card-buttons {
+  display: flex;
+  gap: 5px;
 }
 
 /* 특징 상세 */
@@ -338,4 +503,26 @@
   color: #555;
   line-height: 1.7;
   margin: 0;
+}
+
+.pickup-shop-add,
+.pickup-shop-buy {
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 15px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.pickup-shop-add {
+  border: 1px solid #008950;
+  background: #fff;
+  color: #008950;
+}
+
+.pickup-shop-buy {
+  border: 0;
+  background: #008950;
+  color: #fff;
 }

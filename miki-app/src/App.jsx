@@ -21,20 +21,33 @@ import CartDrawer from './components/CartDrawer/CartDrawer'
 import MemberDrawer from './components/MemberDrawer/MemberDrawer'
 import BrandPage from './components/BrandPage/BrandPage'
 import PickupPage from './components/PickupPage/PickupPage'
+import EverydayPage from './components/EverydayPage/EverydayPage'
 import ShopSelectModal from './components/ShopSelectModal/ShopSelectModal'
 import TopButton from './components/TopButton/TopButton'
 import './App.css'
 
+const CART_STORAGE_KEY = 'miki-cart-items'
+
+// 저장된 장바구니 복원 (손상된 데이터면 빈 배열)
+const loadStoredCart = () => {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) ?? '[]')
+    return Array.isArray(parsed) ? parsed : []
+  } catch {
+    return []
+  }
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [page, setPage] = useState('home') // 'home' | 'spring' | 'summer' | 'brand' | 'pickup'
+  const [page, setPage] = useState('home') // 'home' | 'spring' | 'summer' | 'brand' | 'pickup' | 'everyday'
   const [authOpen, setAuthOpen] = useState(false)
   const [authMode, setAuthMode] = useState('login')
   const [cartOpen, setCartOpen] = useState(false)
   const [shopSelectOpen, setShopSelectOpen] = useState(false)
   const [pendingHash, setPendingHash] = useState(null)
   const [memberPanel, setMemberPanel] = useState(null)
-  const [cartItems, setCartItems] = useState([])
+  const [cartItems, setCartItems] = useState(loadStoredCart)
   const [favoriteItems, setFavoriteItems] = useState([])
   const [recentItems, setRecentItems] = useState([])
   const [user, setUser] = useState(null)
@@ -43,6 +56,11 @@ function App() {
     const unsubscribe = onAuthStateChanged(auth, setUser)
     return unsubscribe
   }, [])
+
+  // 장바구니를 localStorage에 보존 — 새로고침/결제 리다이렉트 복귀 후에도 유지
+  useEffect(() => {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems))
+  }, [cartItems])
 
   // Polar 결제 성공 후 Success URL로 돌아왔을 때 안내
   useEffect(() => {
@@ -117,6 +135,12 @@ function App() {
     window.location.href = url
   }
 
+  // 이름 변경 후 호출 — updateProfile은 같은 User 객체를 제자리에서 바꾸므로
+  // 새 객체로 교체해야 헤더 등이 리렌더된다
+  const refreshUser = () => {
+    setUser(auth.currentUser ? { ...auth.currentUser } : null)
+  }
+
   const openAuth = (mode = 'login') => {
     setAuthMode(mode)
     setAuthOpen(true)
@@ -178,7 +202,7 @@ function App() {
     )
   }
 
-  if (page === 'pickup') {
+  if (page === 'pickup' || page === 'everyday') {
     return (
       <>
         <div className="subpage-shell">
@@ -194,7 +218,22 @@ function App() {
             onAnchor={goHomeWithAnchor}
             onHome={() => setPage('home')}
           />
-          <PickupPage onBack={() => setPage('home')} />
+          {page === 'pickup' ? (
+            <PickupPage
+              onBack={() => setPage('home')}
+              onAddToCart={guardedAddToCart}
+              onBuy={handleBuy}
+              favoriteItems={favoriteItems}
+              onToggleFavorite={guardedToggleFavorite}
+            />
+          ) : (
+            <EverydayPage
+              onBack={() => setPage('home')}
+              onSelectCollection={setPage}
+              onAddToCart={guardedAddToCart}
+              onBuy={handleBuy}
+            />
+          )}
         </div>
         <HamburgerMenu
           isOpen={menuOpen}
@@ -206,12 +245,14 @@ function App() {
           onMemberOpen={openMemberPanel}
           onBrandOpen={() => setPage('brand')}
           onPickupOpen={() => setPage('pickup')}
+          onEverydayOpen={() => setPage('everyday')}
           onAnchor={goHomeWithAnchor}
         />
         <AuthModal isOpen={authOpen} initialMode={authMode} onClose={() => setAuthOpen(false)} />
         <MemberDrawer
           panel={memberPanel}
           user={user}
+          onProfileUpdated={refreshUser}
           cartCount={cartCount}
           favoriteItems={favoriteItems}
           recentItems={recentItems}
@@ -240,18 +281,60 @@ function App() {
   if (page !== 'home') {
     return (
       <>
-        <CollectionPage
-          season={page}
-          onBack={() => setPage('home')}
-          user={user}
-          onAddToCart={guardedAddToCart}
-          favoriteItems={favoriteItems}
-          onToggleFavorite={guardedToggleFavorite}
-          onTrackRecent={addRecentItem}
-          cartCount={cartCount}
+        <div className="subpage-shell">
+          <Header
+            onMenuOpen={() => setMenuOpen(true)}
+            user={user}
+            onLoginOpen={() => openAuth('login')}
+            onLogout={() => signOut(auth)}
+            cartCount={cartCount}
+            onCartOpen={openCart}
+            onBrandOpen={() => setPage('brand')}
+            onPickupOpen={() => setPage('pickup')}
+            onAnchor={goHomeWithAnchor}
+            onHome={() => setPage('home')}
+          />
+          <CollectionPage
+            season={page}
+            onBack={() => setPage('home')}
+            user={user}
+            onAddToCart={guardedAddToCart}
+            favoriteItems={favoriteItems}
+            onToggleFavorite={guardedToggleFavorite}
+            onTrackRecent={addRecentItem}
+            cartCount={cartCount}
+            onCartOpen={openCart}
+          />
+        </div>
+        <HamburgerMenu
+          isOpen={menuOpen}
+          onClose={() => setMenuOpen(false)}
+          onSelectCollection={setPage}
+          onLoginOpen={() => openAuth('login')}
+          onSignupOpen={() => openAuth('signup')}
           onCartOpen={openCart}
+          onMemberOpen={openMemberPanel}
+          onBrandOpen={() => setPage('brand')}
+          onPickupOpen={() => setPage('pickup')}
+          onEverydayOpen={() => setPage('everyday')}
+          onAnchor={goHomeWithAnchor}
         />
         <AuthModal isOpen={authOpen} initialMode={authMode} onClose={() => setAuthOpen(false)} />
+        <MemberDrawer
+          panel={memberPanel}
+          user={user}
+          onProfileUpdated={refreshUser}
+          cartCount={cartCount}
+          favoriteItems={favoriteItems}
+          recentItems={recentItems}
+          onClose={() => setMemberPanel(null)}
+          onLoginOpen={() => openAuth('login')}
+          onCartOpen={() => setCartOpen(true)}
+          onAddToCart={addToCart}
+          onRemoveFavorite={removeFavorite}
+          onClearRecent={clearRecentItems}
+          onBuy={handleBuy}
+        />
         <CartDrawer
           isOpen={cartOpen}
           items={cartItems}
@@ -284,7 +367,7 @@ function App() {
         />
         <Hero />
         <Collection onSelect={setPage} />
-        <Shop />
+        <Shop onEverydayOpen={() => setPage('everyday')} />
         <Video />
         <Product onPickupOpen={() => setPage('pickup')} />
         <Store onOnlineShopOpen={() => setShopSelectOpen(true)} />
@@ -304,6 +387,7 @@ function App() {
         onMemberOpen={openMemberPanel}
         onBrandOpen={() => setPage('brand')}
         onPickupOpen={() => setPage('pickup')}
+        onEverydayOpen={() => setPage('everyday')}
       />
       <AuthModal isOpen={authOpen} initialMode={authMode} onClose={() => setAuthOpen(false)} />
       <ShopSelectModal
@@ -317,6 +401,7 @@ function App() {
       <MemberDrawer
         panel={memberPanel}
         user={user}
+        onProfileUpdated={refreshUser}
         cartCount={cartCount}
         favoriteItems={favoriteItems}
         recentItems={recentItems}

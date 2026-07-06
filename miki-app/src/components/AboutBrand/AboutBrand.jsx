@@ -1,8 +1,29 @@
+import { useEffect, useRef } from 'react'
 import './AboutBrand.css'
 
 function AboutBrand({ onBrandOpen }) {
+  const sectionRef = useRef(null)
+
+  // 스크롤량에 비례해 원 테두리 회전각(--about-spin)을 갱신
+  useEffect(() => {
+    let frame = null
+    const update = () => {
+      frame = null
+      sectionRef.current?.style.setProperty('--about-spin', `${window.scrollY * 0.15}deg`)
+    }
+    const onScroll = () => {
+      if (frame === null) frame = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (frame !== null) cancelAnimationFrame(frame)
+    }
+  }, [])
+
   return (
-    <section id="about" className="about-section">
+    <section id="about" className="about-section" ref={sectionRef}>
       <div className="about-header">
         <p className="about-subtitle">브랜드 정보</p>
         <div className="about-title-row">

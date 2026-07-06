@@ -26,6 +26,21 @@
   width: 36px;
   height: 36px;
   object-fit: contain;
+  transform-origin: 50% 85%; /* 아래쪽을 축으로 갸웃갸웃 */
+  animation: shop-wiggle 2.6s ease-in-out infinite;
+}
+
+.shop-title .shop-icon:last-of-type {
+  animation-duration: 3.1s; /* 좌우 아이콘 주기를 다르게 해 엇박자 */
+}
+
+@keyframes shop-wiggle {
+  0%, 100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
 }
 
 .shop-dots {
@@ -42,9 +57,23 @@
   margin-bottom: 24px;
 }
 
+.shop-banner-link {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
 .shop-banner img {
   width: 100%;
   display: block;
+  transition: transform 0.25s ease;
+}
+
+.shop-banner-link:hover img {
+  transform: scale(1.02);
 }
 
 .shop-series {

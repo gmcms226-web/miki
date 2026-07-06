@@ -30,6 +30,21 @@
   width: 36px;
   height: 36px;
   object-fit: contain;
+  transform-origin: 50% 85%; /* 아래쪽을 축으로 갸웃갸웃 */
+  animation: store-wiggle 2.4s ease-in-out infinite;
+}
+
+.store-title .store-icon:last-of-type {
+  animation-duration: 2.9s; /* 좌우 아이콘 주기를 다르게 해 엇박자 */
+}
+
+@keyframes store-wiggle {
+  0%, 100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
 }
 
 .store-img-link {
@@ -63,6 +78,7 @@
 .store-btn-online {
   width: 123px;
   padding: 12px 0;
+  border-radius: 999px;
   font-family: 'Pretendard', sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -71,7 +87,7 @@
 }
 
 .store-btn-more {
-  background: #222;
+  background: #DE0A16;
 }
 
 .store-btn-online {

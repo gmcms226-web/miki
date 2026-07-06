@@ -113,6 +113,42 @@
   word-break: break-all;
 }
 
+.member-name-edit {
+  flex-shrink: 0;
+  margin-left: auto;
+  height: 28px;
+  padding: 0 12px;
+  border: 1px solid #f4d0bc;
+  border-radius: 14px;
+  background: #fff7f2;
+  color: #FB8E4E;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.member-name-form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.member-name-input {
+  flex: 1;
+  min-width: 0;
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid #f4d0bc;
+  border-radius: 17px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 13px;
+  color: #222;
+}
+
+.member-name-input:focus {
+  outline: none;
+  border-color: #FB8E4E;
+}
+
 .member-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -223,14 +259,14 @@
 }
 
 .member-action-primary {
-  border: 1px solid #FB8E4E;
+  border: 1px solid #008950;
   background: #fff;
-  color: #FB8E4E;
+  color: #008950;
 }
 
 .member-action-buy {
   border: 0;
-  background: #FB8E4E;
+  background: #008950;
   color: #fff;
 }
 

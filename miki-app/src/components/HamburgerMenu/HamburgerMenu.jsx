@@ -10,6 +10,7 @@ function HamburgerMenu({
   onMemberOpen,
   onBrandOpen,
   onPickupOpen,
+  onEverydayOpen,
   onAnchor,
 }) {
   // 서브페이지에서는 앵커 대신 홈으로 이동 후 해당 섹션으로 스크롤
@@ -29,6 +30,11 @@ function HamburgerMenu({
   const openPickup = () => {
     onClose()
     onPickupOpen()
+  }
+
+  const openEveryday = () => {
+    onClose()
+    onEverydayOpen()
   }
 
   const openCollection = (season) => {
@@ -103,7 +109,9 @@ function HamburgerMenu({
           <li>
             <button type="button" onClick={openPickup}>아기 속옷</button>
           </li>
-          <li><a href="#shop" onClick={(event) => handleAnchor(event, '#shop')}>에브리데이 시리즈</a></li>
+          <li>
+            <button type="button" onClick={openEveryday}>에브리데이 시리즈</button>
+          </li>
         </ul>
 
         <ul className="hg-nav-bottom">

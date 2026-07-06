@@ -12,8 +12,151 @@
 .collection-spring {
   width: 78%;
   margin-left: auto;
+  position: relative;
   transform: translateX(-250%);
   transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 카드 위에 걸터앉은 캐릭터 + 말풍선 CTA */
+.collection-cta {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+/* 카드 옆 흰 여백에 세로 배치: 말풍선 위 + 캐릭터 아래 */
+.spring-cta {
+  flex-direction: column-reverse;
+  left: -28%;
+  width: 28%;
+  top: 50%;
+  transform: translateY(-50%);
+  gap: 10px;
+}
+
+.summer-cta {
+  flex-direction: column;
+  right: -28%;
+  width: 28%;
+  top: 50%;
+  transform: translateY(-50%);
+  gap: 10px;
+}
+
+.collection-cta-sprite {
+  display: block;
+  flex-shrink: 0;
+  width: 70px;
+  background-repeat: no-repeat;
+  background-size: 70px auto;
+}
+
+/* 콩: 프레임 62.5px x 12 */
+.cta-beans {
+  height: 62.5px;
+  background-image: url('/images/imgi_37_bg-beans.png');
+  animation: cta-beans-move 1.2s steps(12) infinite;
+}
+
+@keyframes cta-beans-move {
+  to {
+    background-position: 0 -750px;
+  }
+}
+
+/* 캐빗: 프레임 65px x 12 */
+.cta-cabbit {
+  height: 65px;
+  background-image: url('/images/imgi_38_bg-cabbit.png');
+  animation: cta-cabbit-move 1.2s steps(12) infinite;
+}
+
+@keyframes cta-cabbit-move {
+  to {
+    background-position: 0 -780px;
+  }
+}
+
+.collection-cta-bubble {
+  position: relative;
+  max-width: 100%;
+  padding: 8px 13px;
+  border: 0;
+  border-radius: 16px;
+  font-family: 'Jua', sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* 말풍선 꼬리 — 아래 캐릭터를 향함 */
+.collection-cta-bubble::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  margin-left: -6px;
+  border: 6px solid transparent;
+}
+
+/* 곰(콩): 연분홍 말풍선 */
+.spring-cta .collection-cta-bubble {
+  background: #FED3D3;
+  border: 2px solid #d63d55;
+  color: #d63d55;
+}
+
+.spring-cta .collection-cta-bubble::before {
+  border-top-color: #d63d55;
+}
+
+.spring-cta:hover .collection-cta-bubble {
+  background: #d63d55;
+  color: #fff;
+}
+
+/* 토끼(캐빗): 연하늘 말풍선 */
+.summer-cta .collection-cta-bubble {
+  background: #E8F9FF;
+  border: 2px solid #005CA3;
+  color: #005CA3;
+}
+
+.summer-cta .collection-cta-bubble::before {
+  border-top-color: #005CA3;
+}
+
+.summer-cta:hover .collection-cta-bubble {
+  background: #005CA3;
+  color: #fff;
+}
+
+/* 모바일: 흰 여백이 좁아지므로 CTA 축소 */
+@media (max-width: 600px) {
+  .spring-cta,
+  .summer-cta {
+    transform: translateY(-50%) scale(0.78);
+  }
+
+  .spring-cta {
+    transform-origin: left center;
+  }
+
+  .summer-cta {
+    transform-origin: right center;
+  }
+
+  .collection-cta-bubble {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
 }
 
 /* Summer: 오른쪽에서 날아옴, spring과 겹침 */

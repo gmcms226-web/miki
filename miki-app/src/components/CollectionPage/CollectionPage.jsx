@@ -1,5 +1,6 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { COLLECTIONS } from '../../data/collections'
+import LookDetail from '../LookDetail/LookDetail'
 import './CollectionPage.css'
 
 function CollectionPage({
@@ -14,9 +15,11 @@ function CollectionPage({
   onCartOpen,
 }) {
   const { title, year, heroImage, intro, looks } = COLLECTIONS[season]
+  const [selectedLookId, setSelectedLookId] = useState(null)
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    setSelectedLookId(null)
   }, [season])
 
   const getItemContext = (look) => ({
@@ -25,6 +28,12 @@ function CollectionPage({
     lookNumber: look.number,
     lookTitle: look.title,
   })
+
+  // INDEX 박스 클릭 → 해당 LOOK 상세 화면으로 전환
+  const handleIndexClick = (event, lookId) => {
+    event.preventDefault()
+    setSelectedLookId(lookId)
+  }
 
   const handleBuy = (item, look) => {
     onTrackRecent({ ...item, ...getItemContext(look) })
@@ -37,6 +46,25 @@ function CollectionPage({
       ? `${item.checkoutUrl}?customer_email=${encodeURIComponent(user.email)}`
       : item.checkoutUrl
     window.location.href = url
+  }
+
+  const selectedLook = looks.find((look) => look.id === selectedLookId)
+
+  if (selectedLook) {
+    return (
+      <LookDetail
+        look={selectedLook}
+        year={year}
+        collectionTitle={title}
+        favoriteItems={favoriteItems}
+        onToggleFavorite={(item) => onToggleFavorite(item, getItemContext(selectedLook))}
+        onAddToCart={(item) => onAddToCart(item, getItemContext(selectedLook))}
+        onBuy={(item) => handleBuy(item, selectedLook)}
+        onBack={() => setSelectedLookId(null)}
+        cartCount={cartCount}
+        onCartOpen={onCartOpen}
+      />
+    )
   }
 
   return (
@@ -63,7 +91,12 @@ function CollectionPage({
         <p className="look-index-label">INDEX</p>
         <div className="look-index-list">
           {looks.map((look) => (
-            <a href={`#${look.id}`} className="look-index-item" key={look.id}>
+            <a
+              href={`#${look.id}`}
+              className="look-index-item"
+              key={look.id}
+              onClick={(event) => handleIndexClick(event, look.id)}
+            >
               {look.menuImage && <img src={look.menuImage} alt="" className="look-index-img" />}
               <span>LOOK {look.number}</span>
             </a>
@@ -95,8 +128,11 @@ function CollectionPage({
                   <button
                     className={`look-product-favorite${favoriteItems.some((favorite) => favorite.id === item.id) ? ' active' : ''}`}
                     onClick={() => onToggleFavorite(item, getItemContext(look))}
+                    aria-label={`${item.name} 관심상품 ${favoriteItems.some((favorite) => favorite.id === item.id) ? '해제' : '등록'}`}
                   >
-                    관심
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill={favoriteItems.some((favorite) => favorite.id === item.id) ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                    </svg>
                   </button>
                   <button
                     className="look-product-cart"

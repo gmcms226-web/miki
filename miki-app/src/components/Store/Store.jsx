@@ -20,7 +20,7 @@ function Store({ onOnlineShopOpen }) {
           className="store-btn-more"
           onClick={() => window.open('https://www.hotbiscuits.jp/shop/', '_blank', 'noopener')}
         >
-          추천 더보기
+          더 보기
         </button>
         <button className="store-btn-online" onClick={onOnlineShopOpen}>
           <img src="/images/shop.png" alt="" className="store-btn-icon" />

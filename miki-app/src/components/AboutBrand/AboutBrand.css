@@ -42,6 +42,37 @@
   height: auto;
 }
 
+/* 차: 제자리 덜컹덜컹 */
+.about-title-row .about-title-icon:first-of-type {
+  animation: about-car-bump 1.4s ease-in-out infinite;
+}
+
+@keyframes about-car-bump {
+  0%, 50%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-2px) rotate(-2deg);
+  }
+  75% {
+    transform: translateY(-2px) rotate(2deg);
+  }
+}
+
+/* 헬리콥터: 위아래 부유 (구름 cloud-float와 같은 패턴) */
+.about-title-row .about-title-icon:last-of-type {
+  animation: about-heli-float 3s ease-in-out infinite;
+}
+
+@keyframes about-heli-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
 .about-dots {
   height: 6px; /* 원본 168x6 — 값 조절로 크기 변경 */
   width: auto;
@@ -56,25 +87,35 @@
 }
 
 .about-circle {
+  position: relative;
   width: 316px;
   height: 316px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.circle-pink {
+/* 점선 원 테두리만 가상요소로 분리 — 스크롤 연동 회전 시 안의 아이콘은 고정 */
+.about-circle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transform: rotate(var(--about-spin, 0deg));
+  will-change: transform;
+}
+
+.circle-pink::before {
   background-image: url('/images/circle-pink.png');
 }
 
-.circle-green {
+.circle-green::before {
   background-image: url('/images/circle-green.png');
 }
 
-.circle-orange {
+.circle-orange::before {
   background-image: url('/images/circle-orange.png');
 }
 
@@ -88,7 +129,8 @@
 
 .about-btn {
   padding: 14px 48px;
-  background: #222;
+  border-radius: 999px;
+  background: #DE0A16;
   color: #fff;
   font-family: 'Pretendard', sans-serif;
   font-weight: 600;

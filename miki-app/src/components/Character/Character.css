@@ -95,6 +95,32 @@
   height: auto;
 }
 
+/* 해: 천천히 한 바퀴 회전 */
+.character-title-row .character-title-icon:first-of-type {
+  animation: char-sun-spin 14s linear infinite;
+}
+
+@keyframes char-sun-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 나무: 아래를 축으로 갸웃갸웃 */
+.character-title-row .character-title-icon:last-of-type {
+  transform-origin: 50% 90%;
+  animation: char-tree-wiggle 2.8s ease-in-out infinite;
+}
+
+@keyframes char-tree-wiggle {
+  0%, 100% {
+    transform: rotate(-6deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+
 .character-dots {
   height: 6px; /* about-dots와 동일 크기 */
   width: auto;

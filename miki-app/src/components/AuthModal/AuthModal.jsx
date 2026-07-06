@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  updateProfile,
 } from 'firebase/auth'
 import { auth } from '../../firebase'
 import './AuthModal.css'
@@ -19,6 +20,7 @@ const ERROR_MESSAGES = {
 
 function AuthModal({ isOpen, initialMode = 'login', onClose }) {
   const [mode, setMode] = useState(initialMode) // 'login' | 'signup'
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirm, setPasswordConfirm] = useState('')
@@ -35,6 +37,7 @@ function AuthModal({ isOpen, initialMode = 'login', onClose }) {
   if (!isOpen) return null
 
   const resetForm = () => {
+    setName('')
     setEmail('')
     setPassword('')
     setPasswordConfirm('')
@@ -81,7 +84,8 @@ function AuthModal({ isOpen, initialMode = 'login', onClose }) {
       if (mode === 'login') {
         await signInWithEmailAndPassword(auth, email, password)
       } else {
-        await createUserWithEmailAndPassword(auth, email, password)
+        const credential = await createUserWithEmailAndPassword(auth, email, password)
+        await updateProfile(credential.user, { displayName: name.trim() })
       }
       handleClose()
     } catch (err) {
@@ -113,6 +117,16 @@ function AuthModal({ isOpen, initialMode = 'login', onClose }) {
           </button>
         </div>
         <form className="auth-form" onSubmit={handleSubmit}>
+          {mode === 'signup' && (
+            <input
+              type="text"
+              className="auth-input"
+              placeholder="이름"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          )}
           <input
             type="email"
             className="auth-input"

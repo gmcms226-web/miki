@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { PICKUP_PRODUCTS } from '../../data/collections'
 import './PickupPage.css'
 
 const babyAsset = (name) => `/images/babyclothe/${name}`
@@ -92,14 +93,20 @@ const VOICES = [
 ]
 
 const LINEUP = [
-  { id: 'item01', name: '무지 후라이스', shortImg: 'imgi_20_item01a.jpg', combiImg: 'imgi_21_item01b.jpg' },
-  { id: 'item02', name: '캐릭터 프린트 A', shortImg: 'imgi_22_item02a.jpg', combiImg: 'imgi_23_item02b.jpg' },
-  { id: 'item03', name: '캐릭터 프린트 B', shortImg: 'imgi_24_item03a.jpg', combiImg: 'imgi_25_item03b.jpg' },
-  { id: 'item04', name: '캐릭터 프린트 C', shortImg: 'imgi_26_item04a.jpg', combiImg: 'imgi_27_item04b.jpg' },
-  { id: 'item05', name: '잔꽃 무늬', shortImg: 'imgi_28_item05a.jpg', combiImg: 'imgi_29_item05b.jpg' },
-  { id: 'item06', name: '자동차 무늬', shortImg: 'imgi_30_item06a.jpg', combiImg: 'imgi_31_item06b.jpg' },
-  { id: 'item07', name: '동물 무늬', shortImg: 'imgi_32_item07a.jpg', combiImg: 'imgi_33_item07b.jpg' },
+  { id: 'item01', name: '무지 후라이스', desc: '어떤 옷에도 잘 어울리는 기본 무지 타입이에요.', shortImg: 'imgi_20_item01a.jpg', combiImg: 'imgi_21_item01b.jpg', productId: 'baby-01' },
+  { id: 'item02', name: '캐릭터 프린트 A', desc: '핫비 친구들이 콕콕 박힌 귀여운 프린트예요.', shortImg: 'imgi_22_item02a.jpg', combiImg: 'imgi_23_item02b.jpg', productId: 'baby-02' },
+  { id: 'item03', name: '캐릭터 프린트 B', desc: '알록달록 무늬로 갈아입힐 때마다 즐거워요.', shortImg: 'imgi_24_item03a.jpg', combiImg: 'imgi_25_item03b.jpg', productId: 'baby-03' },
+  { id: 'item04', name: '캐릭터 프린트 C', desc: '은은한 톤의 프린트로 어디에나 무난해요.', shortImg: 'imgi_26_item04a.jpg', combiImg: 'imgi_27_item04b.jpg', productId: 'baby-04' },
+  { id: 'item05', name: '잔꽃 무늬', desc: '은은한 잔꽃 무늬로 사랑스러운 분위기예요.', shortImg: 'imgi_28_item05a.jpg', combiImg: 'imgi_29_item05b.jpg', productId: 'baby-05' },
+  { id: 'item06', name: '자동차 무늬', desc: '아이들이 좋아하는 자동차가 가득해요.', shortImg: 'imgi_30_item06a.jpg', combiImg: 'imgi_31_item06b.jpg', productId: 'baby-06' },
+  { id: 'item07', name: '동물 무늬', desc: '포근한 동물 친구들과 함께하는 하루예요.', shortImg: 'imgi_32_item07a.jpg', combiImg: 'imgi_33_item07b.jpg', productId: 'baby-07' },
+  { id: 'item08', name: '컬러 후라이스', desc: '부드러운 컬러로 물들인 데일리 타입이에요.', shortImg: '/images/baby/color_01.jpg', combiImg: '/images/baby/color_02.jpg', productId: 'baby-08' },
 ]
+
+// babyclothe/ 폴더 파일명 또는 절대 경로 둘 다 허용
+const resolveBabyImg = (img) => (img.startsWith('/') ? img : babyAsset(img))
+
+const productById = Object.fromEntries(PICKUP_PRODUCTS.map((product) => [product.id, product]))
 
 const FEATURES = [
   {
@@ -128,8 +135,9 @@ const FEATURES = [
   },
 ]
 
-function PickupPage({ onBack }) {
+function PickupPage({ onBack, onAddToCart, onBuy, favoriteItems = [], onToggleFavorite }) {
   const [openQna, setOpenQna] = useState(null)
+  const [cardImageIndex, setCardImageIndex] = useState({}) // 카드별 현재 이미지 (0=숏, 1=콤비)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -138,6 +146,18 @@ function PickupPage({ onBack }) {
   const toggleQna = (index) => {
     setOpenQna((prev) => (prev === index ? null : index))
   }
+
+  const setCardImage = (id, imageIndex) => {
+    setCardImageIndex((prev) => ({ ...prev, [id]: imageIndex }))
+  }
+
+  // 장바구니/최근 본 상품에 표시될 컨텍스트
+  const itemContext = (index) => ({
+    season: 'pickup',
+    seasonLabel: 'BABY',
+    lookNumber: String(index + 1).padStart(2, '0'),
+    lookTitle: 'BABY UNDERWEAR',
+  })
 
   return (
     <div className="pickup-page">
@@ -198,6 +218,105 @@ function PickupPage({ onBack }) {
         </div>
       </section>
 
+      <section className="pickup-lineup">
+        <h3 className="pickup-section-title pink">상품 라인업</h3>
+        <p className="pickup-lineup-note">모든 무늬는 숏 속옷과 콤비 속옷 두 가지로 준비되어 있습니다.</p>
+        <div className="pickup-lineup-grid">
+          {LINEUP.map((item, index) => {
+            const product = productById[item.productId]
+            const isFavorite = product && favoriteItems.some((favorite) => favorite.id === product.id)
+            const images = [item.shortImg, item.combiImg]
+            const currentImage = cardImageIndex[item.id] ?? 0
+            const nextImage = (currentImage + 1) % images.length
+            return (
+              <div className="pickup-lineup-item" key={item.id}>
+                <div className="pickup-card-media">
+                  <img
+                    src={resolveBabyImg(images[currentImage])}
+                    alt={`${item.name} ${currentImage === 0 ? '숏' : '콤비'} 속옷`}
+                    className="pickup-card-photo"
+                  />
+                  <button
+                    type="button"
+                    className="pickup-card-nav prev"
+                    onClick={() => setCardImage(item.id, nextImage)}
+                    aria-label="이전 이미지"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    type="button"
+                    className="pickup-card-nav next"
+                    onClick={() => setCardImage(item.id, nextImage)}
+                    aria-label="다음 이미지"
+                  >
+                    ›
+                  </button>
+                  <div className="pickup-card-dots">
+                    {images.map((image, imageIndex) => (
+                      <button
+                        type="button"
+                        key={image}
+                        className={imageIndex === currentImage ? 'on' : ''}
+                        onClick={() => setCardImage(item.id, imageIndex)}
+                        aria-label={`${imageIndex + 1}번째 이미지 보기`}
+                      />
+                    ))}
+                  </div>
+                  {product && onToggleFavorite && (
+                    <button
+                      className={`pickup-card-fav${isFavorite ? ' active' : ''}`}
+                      onClick={() => onToggleFavorite(product, itemContext(index))}
+                      aria-label={`${item.name} 관심상품 ${isFavorite ? '해제' : '등록'}`}
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill={isFavorite ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+                <div className="pickup-card-body">
+                  <h4 className="pickup-card-name">{item.name}</h4>
+                  <div className="pickup-card-tags">
+                    <span>숏 속옷</span>
+                    <span>콤비 속옷</span>
+                  </div>
+                  <p className="pickup-card-desc">{item.desc}</p>
+                  {product && (
+                    <div className="pickup-card-footer">
+                      <div className="pickup-card-price">
+                        <span>PRICE</span>
+                        <strong>{product.price.toLocaleString()}원</strong>
+                      </div>
+                      <div className="pickup-card-buttons">
+                        <button className="pickup-shop-add" onClick={() => onAddToCart(product, itemContext(index))}>
+                          담기
+                        </button>
+                        <button className="pickup-shop-buy" onClick={() => onBuy(product)}>
+                          BUY
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </section>
+
+      <section className="pickup-voice">
+        <h3 className="pickup-section-title pink">엄마들의 목소리</h3>
+        <div className="pickup-voice-list">
+          {VOICES.map((voice) => (
+            <div className="pickup-voice-item" key={voice.image}>
+              <img src={babyAsset(voice.image)} alt="엄마 일러스트" className="pickup-voice-img" />
+              <p className="pickup-voice-text">{voice.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="pickup-qna">
         <h3 className="pickup-section-title pink">궁금해요 Q&amp;A</h3>
         <div className="pickup-qna-list">
@@ -219,34 +338,6 @@ function PickupPage({ onBack }) {
         </div>
       </section>
 
-      <section className="pickup-voice">
-        <h3 className="pickup-section-title pink">엄마들의 목소리</h3>
-        <div className="pickup-voice-list">
-          {VOICES.map((voice) => (
-            <div className="pickup-voice-item" key={voice.image}>
-              <img src={babyAsset(voice.image)} alt="엄마 일러스트" className="pickup-voice-img" />
-              <p className="pickup-voice-text">{voice.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="pickup-lineup">
-        <h3 className="pickup-section-title pink">상품 라인업</h3>
-        <p className="pickup-lineup-note">모든 무늬는 숏 속옷과 콤비 속옷 두 가지로 준비되어 있습니다.</p>
-        <div className="pickup-lineup-grid">
-          {LINEUP.map((item) => (
-            <div className="pickup-lineup-item" key={item.id}>
-              <div className="pickup-lineup-imgs">
-                <img src={babyAsset(item.shortImg)} alt={`${item.name} 숏 속옷`} />
-                <img src={babyAsset(item.combiImg)} alt={`${item.name} 콤비 속옷`} />
-              </div>
-              <p className="pickup-lineup-name">{item.name}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section className="pickup-features">
         <h3 className="pickup-section-title blue">핫 비스킷 속옷의 특징</h3>
         <div className="pickup-feature-list">
@@ -262,6 +353,7 @@ function PickupPage({ onBack }) {
           ))}
         </div>
       </section>
+
     </div>
   )
 }

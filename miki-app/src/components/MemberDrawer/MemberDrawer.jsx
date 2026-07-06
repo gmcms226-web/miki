@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react'
+import { updateProfile } from 'firebase/auth'
+import { auth } from '../../firebase'
 import './MemberDrawer.css'
 
 const PANEL_TITLES = {
@@ -19,9 +22,39 @@ function MemberDrawer({
   onRemoveFavorite,
   onClearRecent,
   onBuy,
+  onProfileUpdated,
 }) {
   const isOpen = Boolean(panel)
   const [label, title] = PANEL_TITLES[panel] || PANEL_TITLES.mypage
+  const [editingName, setEditingName] = useState(false)
+  const [nameInput, setNameInput] = useState('')
+  const [savingName, setSavingName] = useState(false)
+
+  // 패널을 닫거나 다른 탭으로 바꾸면 이름 수정 모드 해제
+  useEffect(() => {
+    setEditingName(false)
+  }, [panel])
+
+  const startNameEdit = () => {
+    setNameInput(user?.displayName || '')
+    setEditingName(true)
+  }
+
+  const handleNameSave = async (event) => {
+    event.preventDefault()
+    const trimmed = nameInput.trim()
+    if (!trimmed) return
+    setSavingName(true)
+    try {
+      await updateProfile(auth.currentUser, { displayName: trimmed })
+      onProfileUpdated()
+      setEditingName(false)
+    } catch {
+      alert('이름 저장에 실패했습니다. 다시 시도해 주세요.')
+    } finally {
+      setSavingName(false)
+    }
+  }
 
   const addItemToCart = (item) => {
     onAddToCart(item, {
@@ -90,12 +123,34 @@ function MemberDrawer({
         {panel === 'mypage' && (
           <div className="member-mypage">
             <div className="member-profile">
-              <span className="member-avatar">{user?.email ? user.email.slice(0, 1).toUpperCase() : 'G'}</span>
+              <span className="member-avatar">{user ? (user.displayName || user.email).slice(0, 1).toUpperCase() : 'G'}</span>
               <div>
                 <p className="member-profile-label">{user ? '로그인 계정' : '게스트'}</p>
-                <strong>{user?.email || '로그인이 필요합니다.'}</strong>
+                <strong>{user ? (user.displayName ? `${user.displayName}님` : user.email) : '로그인이 필요합니다.'}</strong>
               </div>
+              {user && !editingName && (
+                <button className="member-name-edit" onClick={startNameEdit}>
+                  이름 수정
+                </button>
+              )}
             </div>
+            {user && editingName && (
+              <form className="member-name-form" onSubmit={handleNameSave}>
+                <input
+                  className="member-name-input"
+                  value={nameInput}
+                  onChange={(event) => setNameInput(event.target.value)}
+                  placeholder="이름"
+                  required
+                />
+                <button type="submit" className="member-action-primary" disabled={savingName}>
+                  {savingName ? '저장 중...' : '저장'}
+                </button>
+                <button type="button" className="member-action-subtle" onClick={() => setEditingName(false)}>
+                  취소
+                </button>
+              </form>
+            )}
             {!user && (
               <button className="member-wide-button" onClick={openLogin}>
                 로그인 / 회원가입

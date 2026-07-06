@@ -1,6 +1,6 @@
 import './Shop.css'
 
-function Shop() {
+function Shop({ onEverydayOpen }) {
   return (
     <section id="shop" className="shop-section">
       <p className="shop-label">추천</p>
@@ -13,9 +13,9 @@ function Shop() {
         <img src="/images/shop-dots.png" alt="" />
       </div>
       <div className="shop-banner">
-        <a href="#">
-          <img src="/images/shop-banner.png" alt="Shop Banner" />
-        </a>
+        <button type="button" className="shop-banner-link" onClick={onEverydayOpen}>
+          <img src="/images/shop-banner.png" alt="핫 비스킷 에브리데이 시리즈 특집 보러가기" />
+        </button>
       </div>
       <p className="shop-series">핫 비스킷 에브리데이 시리즈!</p>
     </section>

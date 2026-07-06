@@ -45,11 +45,11 @@ function Sidebar({ onSelectCollection }) {
 
   return (
     <div className="sidebar">
-      <div className="sidebar-logo">
-        <img src="/images/logo.png" alt="HOT BISCUITS MIKIHOUSE" />
-      </div>
-
       <div className="sidebar-search">
+        <div className="search-mascots" aria-hidden="true">
+          <div className="mascot-sprite mascot-beans" />
+          <div className="mascot-sprite mascot-cabbit" />
+        </div>
         <form className="search-wrap" onSubmit={handleSearch}>
           <input
             type="text"

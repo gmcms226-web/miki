@@ -1,0 +1,260 @@
+.everyday-page {
+  padding: 32px 24px 56px;
+  background: #fff;
+}
+
+.everyday-back {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+  background: none;
+  padding: 0;
+}
+
+.everyday-hero {
+  padding: 28px 0 8px;
+  text-align: center;
+}
+
+.everyday-label {
+  margin: 0 0 6px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: #FB8E4E;
+}
+
+.everyday-title {
+  margin: 0;
+  font-family: 'Jua', sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  color: #222;
+}
+
+.everyday-intro {
+  margin: 14px 0 22px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #555;
+}
+
+.everyday-hero-img {
+  width: 100%;
+  border-radius: 24px;
+}
+
+.everyday-section-title {
+  margin: 0 0 18px;
+  font-family: 'Jua', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #222;
+  text-align: center;
+}
+
+/* 시리즈 3포인트 */
+.everyday-points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 32px 0;
+}
+
+.everyday-point {
+  padding: 18px 12px;
+  border: 1px solid #f4d0bc;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.everyday-point-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: #fff;
+  font-family: 'Jua', sans-serif;
+  font-size: 14px;
+}
+
+.everyday-point-number.pink {
+  background: #e56a8c;
+}
+
+.everyday-point-number.blue {
+  background: #5a9fd4;
+}
+
+.everyday-point-number.orange {
+  background: #FB8E4E;
+}
+
+.everyday-point-title {
+  margin: 10px 0 6px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #222;
+}
+
+.everyday-point-desc {
+  margin: 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #666;
+}
+
+/* 하루 타임라인 */
+.everyday-timeline {
+  padding: 24px 0 32px;
+}
+
+.everyday-timeline-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.everyday-step {
+  padding: 14px 8px;
+  border-radius: 16px;
+  background: #fff7f2;
+  text-align: center;
+}
+
+.everyday-step-time {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: #FB8E4E;
+  color: #fff;
+  font-family: 'Jua', sans-serif;
+  font-size: 13px;
+}
+
+.everyday-step-desc {
+  margin: 10px 0 0;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* 베스트 4 */
+.everyday-best {
+  padding: 8px 0 32px;
+}
+
+.everyday-best-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.everyday-best-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 14px;
+  border: 1px solid #f4d0bc;
+  border-radius: 16px;
+}
+
+.everyday-best-season {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 11px;
+  color: #999;
+}
+
+.everyday-best-name {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 14px;
+  color: #222;
+}
+
+.everyday-best-price {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #FB8E4E;
+}
+
+.everyday-best-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.everyday-add,
+.everyday-buy {
+  flex: 1;
+  height: 32px;
+  border-radius: 16px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.everyday-add {
+  border: 1px solid #008950;
+  background: #fff;
+  color: #008950;
+}
+
+.everyday-buy {
+  border: 0;
+  background: #008950;
+  color: #fff;
+}
+
+/* 하단 CTA */
+.everyday-cta {
+  padding: 24px 0 0;
+  border-top: 1px solid #f4d0bc;
+  text-align: center;
+}
+
+.everyday-cta-text {
+  margin: 0 0 14px;
+  font-family: 'Jua', sans-serif;
+  font-size: 17px;
+  color: #222;
+}
+
+.everyday-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.everyday-cta-buttons button {
+  padding: 11px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: #FB8E4E;
+  color: #fff;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .everyday-page {
+    padding: 24px 18px 48px;
+  }
+
+  .everyday-points {
+    grid-template-columns: 1fr;
+  }
+
+  .everyday-timeline-track {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

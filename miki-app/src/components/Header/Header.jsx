@@ -41,7 +41,7 @@ function Header({ onMenuOpen, user, onLoginOpen, onLogout, cartCount, onCartOpen
         <div className="header-actions">
           {user ? (
             <div className="auth-status">
-              <span className="auth-email">{user.email}</span>
+              <span className="auth-email">{user.displayName ? `${user.displayName}님` : user.email}</span>
               <button className="auth-action-btn" onClick={onLogout}>
                 로그아웃
               </button>
@@ -60,7 +60,24 @@ function Header({ onMenuOpen, user, onLoginOpen, onLogout, cartCount, onCartOpen
             {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
           </button>
           <button className="hamburger-flower" onClick={onMenuOpen} aria-label="메뉴 열기">
-            <img src="/images/hg-bt.png" alt="메뉴" />
+            <svg width="38" height="38" viewBox="0 0 48 48" aria-hidden="true">
+              <g fill="#005CA3">
+                <circle cx="36" cy="24" r="8" />
+                <circle cx="32.5" cy="32.5" r="8" />
+                <circle cx="24" cy="36" r="8" />
+                <circle cx="15.5" cy="32.5" r="8" />
+                <circle cx="12" cy="24" r="8" />
+                <circle cx="15.5" cy="15.5" r="8" />
+                <circle cx="24" cy="12" r="8" />
+                <circle cx="32.5" cy="15.5" r="8" />
+                <circle cx="24" cy="24" r="12" />
+              </g>
+              <g stroke="#fff" strokeWidth="2.6" strokeLinecap="round">
+                <line x1="17" y1="19" x2="31" y2="19" />
+                <line x1="17" y1="24" x2="31" y2="24" />
+                <line x1="17" y1="29" x2="31" y2="29" />
+              </g>
+            </svg>
           </button>
         </div>
       </div>
