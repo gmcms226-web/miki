@@ -51,7 +51,7 @@ React Router를 쓰지 않는다. `App.jsx`의 `page` state(`'home' | 'spring' |
 
 ### 상품 데이터와 결제 (Polar)
 
-- 상품/룩북 데이터의 단일 소스는 `src/data/collections.js` (`COLLECTIONS.spring/summer` → looks → products). 상품별 `checkoutUrl`이 Polar(샌드박스) Checkout Link다.
+- 상품/룩북 데이터의 단일 소스는 `src/data/collections.js`. 내보내는 것 세 가지: `COLLECTIONS.spring/summer`(looks → products, CollectionPage용), `PICKUP_PRODUCTS`(PickupPage 아기 속옷), `getCollectionProducts()`(EverydayPage 베스트 4). 상품별 `checkoutUrl`이 Polar(샌드박스) Checkout Link다.
 - 상품의 `keywords` 배열은 사이드바 검색(`Sidebar.jsx`)이 이름·시즌 라벨과 함께 매칭에 사용한다 — 상품 추가 시 한/영 검색어를 함께 넣는다.
 - 구매 흐름: `App.jsx handleBuy` — 로그인 상태면 `?customer_email=`로 이메일 프리필 후 `checkoutUrl`로 리다이렉트. 결제 완료 후 `?payment=success`로 복귀하면 App에서 감지해 완료 alert.
 - **Polar 통화 함정**: 제품은 USD 필수 + 추가 통화(KRW)는 모든 칸을 채워야 한다. 하나라도 비면 해당 통화 접속자에게 Free/₩0으로 노출된다. 대시보드 목록은 USD만 표시하므로 KRW 검증은 checkout-links `{id}/redirect` → `/v1/checkouts/client/{secret}` JSON으로 확인한다.

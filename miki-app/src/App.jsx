@@ -141,6 +141,16 @@ function App() {
     setUser(auth.currentUser ? { ...auth.currentUser } : null)
   }
 
+  // 로그아웃 시 장바구니·관심·최근 본 상품 초기화 — 다음 사용자에게 이전 계정의 데이터가 남지 않도록
+  const handleLogout = () => {
+    setCartItems([])
+    setFavoriteItems([])
+    setRecentItems([])
+    setCartOpen(false)
+    setMemberPanel(null)
+    signOut(auth)
+  }
+
   const openAuth = (mode = 'login') => {
     setAuthMode(mode)
     setAuthOpen(true)
@@ -210,7 +220,7 @@ function App() {
             onMenuOpen={() => setMenuOpen(true)}
             user={user}
             onLoginOpen={() => openAuth('login')}
-            onLogout={() => signOut(auth)}
+            onLogout={handleLogout}
             cartCount={cartCount}
             onCartOpen={openCart}
             onBrandOpen={() => setPage('brand')}
@@ -286,7 +296,7 @@ function App() {
             onMenuOpen={() => setMenuOpen(true)}
             user={user}
             onLoginOpen={() => openAuth('login')}
-            onLogout={() => signOut(auth)}
+            onLogout={handleLogout}
             cartCount={cartCount}
             onCartOpen={openCart}
             onBrandOpen={() => setPage('brand')}
@@ -359,7 +369,7 @@ function App() {
           onMenuOpen={() => setMenuOpen(true)}
           user={user}
           onLoginOpen={() => openAuth('login')}
-          onLogout={() => signOut(auth)}
+          onLogout={handleLogout}
           cartCount={cartCount}
           onCartOpen={openCart}
           onBrandOpen={() => setPage('brand')}

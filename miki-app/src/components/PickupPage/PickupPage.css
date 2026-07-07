@@ -526,3 +526,16 @@
   background: #008950;
   color: #fff;
 }
+
+/* 모바일: 카드 폭이 좁아 가격+버튼 가로 배치가 찌그러지므로 세로로 쌓는다 */
+@media (max-width: 600px) {
+  .pickup-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pickup-shop-add,
+  .pickup-shop-buy {
+    flex: 1;
+  }
+}
