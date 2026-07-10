@@ -23,16 +23,18 @@
 
 ## 2. Before / After 이미지
 
-<!-- 이미지 경로는 프로젝트에 맞게 수정하세요. -->
-<!-- GitHub에서는 public/images 또는 docs/images 폴더 사용을 추천합니다. -->
+<!-- 본 프로젝트는 기존 페이지와 큰 시각적 차이를 비교하기보다, 여러 섹션을 하나의 일체형 웹페이지로 구성한 결과 화면을 중심으로 보여줍니다. -->
+<!-- 이미지 교체 시 아래 경로만 프로젝트 이미지 경로에 맞게 수정하세요. -->
 
+### 🖼️ 최종 일체형 웹페이지
+
+![일체형 웹페이지 결과 이미지](./miki-app/public/images/miki_web.png)
+
+<!-- Before / After 비교가 필요한 프로젝트라면 아래 표를 사용하세요. -->
+<!--
 | Before | After |
 |---|---|
 | ![Before](./docs/images/before.png) | ![After](./docs/images/after.png) |
-
-<!-- 이미지가 없다면 아래처럼 대체 가능 -->
-<!--
-> Before / After 이미지는 추후 추가 예정입니다.
 -->
 
 <br />
@@ -412,3 +414,4 @@ Copyright (c) YYYY Your Name
 
 This project is licensed under the MIT License.
 -->
+
